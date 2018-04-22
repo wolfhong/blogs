@@ -1,0 +1,7 @@
+<%-
+   page.categories.length ? 
+   page.categories.map(function(category) {
+       return printf('<a href="{0}" title="{1}" rel="category tag">{1}</a>', url_for(category.path), escapeHTML(category.name));
+   }).join(',') : 
+   __('uncategorized');
+%>

@@ -1,0 +1,69 @@
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, html, iframe, img, input, p, select, table, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+}
+
+img {border: 0 none;}
+
+body {
+    background: #fff;
+    color: #444;
+    font: 400 15px/1.8em $MainFont;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, td, th {
+    vertical-align: top;
+    text-align: left;
+    font-weight: 400;
+}
+
+dl {
+    display: block;
+    margin: 1em 0;
+    text-decoration: underline;
+    font-weight: bold;
+    dd {margin-left: 2em;}
+}
+
+input, textarea {
+    margin: 0;
+    padding: 3px;
+    border: 1px solid #bdc7d8;
+}
+
+cite:before {
+    content: "—";
+    padding: 0.3 em;
+}
+
+hr {
+    margin: 2.4em auto;
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    position: relative;
+}
+
+a {
+    outline: 0;
+    text-decoration: none;
+    color: $color-theme;
+    &:hover {
+        color: $color-theme;
+        text-decoration: underline;
+    }
+}

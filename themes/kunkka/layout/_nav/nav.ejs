@@ -1,0 +1,26 @@
+<nav id="header">
+    <div class="container clearfix">
+        <%- partial('_nav/logo') %>
+        <div id="global-nav">
+            <div class="gnli <% if(is_home()) { %>current<% } %>">
+                <a class="gna fa fa-home" href="<%- config.root %>" title="<%= config.title %>">
+                    <span class="gn-item"><%= __('home') %></span>
+                </a>
+            </div>
+            <div id="dropdown" class="gnli<% if (is_post()) { %> current<% } %>">
+                <a class="gna fa fa-bars" href="#">
+                    <span class="gn-item"><%= __('navigation') %></span>
+                </a>
+                <%- partial('_nav/dropdown') %>
+            </div>
+            <% theme.nav.forEach(function(item) { %>
+            <div class="gnli<% if(is_current(item.url)) { %> current<% } %>">
+                <a class="gna fa <%- item.icon %>" href="<%- url_for(item.url) %>" title="<%= item.description || '' %>">
+                    <span class="gn-item"><%= item.title %></span>
+                </a>
+            </div>
+            <% }); %>
+        </div>
+        <%- partial('_nav/search') %>
+    </div>
+</nav>

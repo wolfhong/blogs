@@ -1,0 +1,36 @@
+.container {
+    margin: 0 auto;
+    width: 80%;
+    position: relative;
+    #content & {
+        padding-top: 90px;
+        padding-bottom: 40px;
+    }
+}
+
+#primary {
+    float: left;
+    width: 70%;
+    min-height: 25pc;
+}
+
+body.post #primary {
+    float: none;
+    width: auto;
+    &.has-toc {
+        float: left;
+        width: 75%;
+    }
+}
+
+.post-content {
+    margin: 0 0 12px;
+    line-height: 1.8em;
+    word-break: normal;
+    small {
+        padding-top: 20px;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 1.2em;
+    }
+}

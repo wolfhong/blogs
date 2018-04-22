@@ -1,0 +1,30 @@
+#pager {
+    padding: 0 !important;
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+    clear: both;
+    .previous {float: left;}
+    .next {float: right;}
+    .previous, .next {
+        display: inline;
+        a {
+            text-transform: none;
+            letter-spacing: 1px;
+            font: 800 13px/1.7em;
+            padding: 10px;
+            color: #fff;
+            border: 2px solid #404040;
+            border-radius: 3px;
+            background-color: #404040;
+            -webkit-transition: all 0.2s ease;
+               -moz-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+            &:hover, &:focus {
+                text-decoration: none;
+                color: #404040;
+                background-color: #fff;
+            }
+        }
+    }
+}

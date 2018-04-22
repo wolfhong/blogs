@@ -1,0 +1,16 @@
+---
+layout: layout
+---
+<main id="primary">
+    <header>
+        <h1 class="post-title">
+            <a href="<%- url_for(page.path) %>" title="<%= page.title %>"><%= page.title %></a>
+        </h1>
+    </header>
+    <article class="post-body clearfix">
+        <div class="post-content">
+            <%- page.content || body %>
+        </div>
+    </article>
+    <%- partial('_addon/comments') %>
+</main><!-- #primary -->

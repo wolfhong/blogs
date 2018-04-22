@@ -1,0 +1,89 @@
+.bookmark {padding-right: 5px;}
+
+.inline-ul {
+    font-size: 0;
+    .inline-li {
+        vertical-align: top;
+        word-spacing: normal;
+        letter-spacing: normal;
+        font-size: 9pt;
+    }
+}
+
+.inline-li {display: inline-block;}
+
+.post {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    &:last-child {border-bottom: none;}
+    .post-preview hr {display: none;}
+}
+
+.post-has-thumbnail .post-body {
+    position: relative;
+    overflow: hidden;
+    padding-left: 150px;
+    height: 130px;
+    p {margin-top: -4px;}
+}
+
+.post-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 130px;
+    height: 130px;
+    background: #fafafa;
+    a {
+        position: relative;
+        width: 130px;
+        height: 130px;
+        display: block;
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 130px;
+            height: 130px;
+            content: '';
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+    }
+}
+
+.post-title {
+    min-height: 24px;
+    font-size: 18px;
+    line-height: 1.33333;
+    a {color: #444;}
+}
+
+.post-sticky {
+    border: 1px solid #5895be;
+    color: #5895be;
+    font-size: 10px;
+    padding: 2px 4px;
+    margin-left: 5px;
+}
+
+.post-span {
+    padding: 0 5px;
+    color: #bbb;
+}
+
+.post-meta {
+    padding-bottom: 0px;
+    .inline-ul {display: block;}
+    .inline-li {font-size: 9pt;}
+    & , a {color: #777;}
+}
+
+#more {
+    margin: 2.4em auto;
+    background: #d9d9d9;
+    width: 100%;
+    height: 1px;
+    display: inline-block;
+}

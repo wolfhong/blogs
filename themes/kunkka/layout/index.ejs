@@ -1,0 +1,19 @@
+---
+layout: layout
+---
+<main id="primary">
+    <%- partial('_addon/notice') %>
+    <div id="postlist">
+    <% page.posts.each(function(post) { %>
+    <%- partial('_post/preview', {post: post}) %>
+    <% }); %>
+    </div>
+</main>
+<div id="pagenavi">
+<%-
+    paginator({
+        prev_text: ' ',
+        next_text: ' '
+    })
+%>
+</div>

@@ -1,0 +1,28 @@
+<%
+   var year = '';
+   if(theme.since) {
+       year = theme.since + '-';
+   }
+   year += new Date().getFullYear() + ' ' + config.title + '.';
+%>
+<!-- #content -->
+<footer id="footer">
+    <div class="container">
+        <p><% if(is_cc(theme.license)) { %>
+            <span class="cc-license">
+                <a href="https://creativecommons.org/licenses/<%- theme.license %>/4.0" target="_blank" title="Creative Commons license <%- theme.license %>">
+                <span class="cc cc-cc"></span>
+                <% theme.license.split('-').forEach(function(icon){ %>
+                    <span class="cc cc-<%- icon %>"></span>
+                <% }); %>
+                </a>
+            </span>
+            &nbsp;<%= year %>
+        <% } else { %>
+            &copy; <%- year %> All Rights Reserved.
+        <% } %></p>
+        <p>Themed by <a href="https://github.com/unnamed42/hexo-theme-kunkka">Kunkka</a> | Powered by <a href="https://hexo.io/">Hexo</a>.</p>
+        <%- partial('_footer/sns') %>
+    </div>
+</footer>
+<!-- #footer -->

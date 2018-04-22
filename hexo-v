@@ -1,0 +1,21 @@
+hexo -v 输出版本
+================
+
+hexo: 3.7.1
+hexo-cli: 1.1.0
+os: Darwin 14.5.0 darwin x64
+http_parser: 2.7.0
+node: 6.9.1
+v8: 5.1.281.84
+uv: 1.9.1
+zlib: 1.2.8
+ares: 1.10.1-DEV
+icu: 57.1
+modules: 48
+openssl: 1.0.2j
+
+
+其他依赖
+=========
+* theme使用kunkka: https://github.com/unnamed42/hexo-theme-kunkka
+* 目录使用默认的toc, 只需要在markdown中定义toc: true

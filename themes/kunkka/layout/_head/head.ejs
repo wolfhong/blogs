@@ -1,0 +1,117 @@
+<head>
+    <% //if(theme.old_browser) {
+       // <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       //} else {} %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+
+    <title>
+    <% if(page.archive) { %>
+        <%= page.year || page.month || __('archive') %> -
+    <% } else if (page.title || page.category || page.tag) { %>
+        <%= page.title || page.category || page.tag %> -
+    <% } %>
+    <%= config.title || (config.author + "\'s Blog") %>
+    </title>
+
+    <meta name="keywords" content="<%= config.keywords || '' %>">
+    <meta name="description" content="<%= config.description || '' %>">
+    <meta name="author" content="<%= config.author || '' %>">
+
+    <% if(config.feed) { %>
+    <link rel="alternate" type="application/<%- config.feed.type.replace(/\d+/g,'') %>+xml" href="<%- url_for(config.feed.path) %>">
+    <% } %>
+
+    <% if(theme.favicon) { %>
+    <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon">
+    <% } %>
+
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <% if(theme.creative_commons) { %><link href="https://cdn.jsdelivr.net/npm/cc-icons@1.0.0/css/css-icons.min.css" rel="stylesheet" type="text/css"><% } %>
+
+    <script type="text/javascript">
+    if(!("jQuery" in window)) {
+        window._jqQ = []; // jQuery call queue
+        window.jQuery = window.$ = function() {
+            _jqQ.push(arguments);
+        };
+    }
+    </script>
+    <script id="jquery-src" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" async onload="_jqQ.forEach(function(args){$.apply($,args)});delete window._jqQ;"></script>
+
+    <% if(theme.buttons.base && theme.buttons.dropdown) { %><script src="/js/buttons.js" type="text/javascript" async></script><% } %>
+    <script src="<%- url_for('/js/script.js') %>" type="text/javascript" async></script>
+
+    <!-- Global javascript config object -->
+    <script type="text/javascript">
+    var CONFIG = {
+    <% if(theme.disqus_shortname) { %>
+        disqus: {
+            api_key: <%- quoted(theme.disqus_api_key) %>,
+            forum: <%- quoted(theme.disqus_shortname) %>
+        },
+    <% } %>
+    <% if(theme.github_comment && theme.github_comment.repo) { %>
+        gitment: {
+            owner: <%- quoted(theme.github_comment.owner) %>,
+            repo: <%- quoted(theme.github_comment.repo) %>,
+            <% if(page.issue) { %>
+            issue: <%- page.issue %>
+            <% } %>
+        },
+    <% } %>
+    };
+    </script>
+
+    <% if(theme.disqus_shortname) { %>
+    <%     if(page.comments) { %>
+    <script type="text/javascript">
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.type = "text/javascript";s.async = true;
+        s.src = 'https://<%- theme.disqus_shortname %>.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <%     } %>
+    <%     if(theme.github_comment && theme.github_comment.repo) { %>
+    <script src="/js/github-comment.js" type="text/javascript" defer></script>
+    <%     } %>
+    <% } %>
+
+    <% if(theme.math) { %>
+    <%     if(theme.math == "mathjax" && page.mathjax) { %>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        showProcessingMessages: false,
+        jax: ["input/TeX","output/HTML-CSS", "output/PreviewHTML"],
+        extensions: ["tex2jax.js", "fast-preview.js", "AssistiveMML.js" /*"MathMenu.js", "MathZoom.js", "[Contrib]/a11y/accessibility-menu.js"*/ ],
+        TeX: {
+            extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+        },
+        tex2jax: {
+            inlineMath: [['$','$']],
+            displayMath: [['$$','$$']],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        "HTML-CSS": {linebreaks: {automatic: true}}
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.2/MathJax.js?config=TeX-AMS_SVG" async></script>
+    <%     } else if(theme.math == "katex") { %>
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.9.0-alpha2/dist/katex.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.9.0-alpha2/dist/katex.min.js" async></script>
+    <%     } %>
+    <% } %>
+
+    <% if(theme.busuanzi) { %>
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+    <% } %>
+
+</head>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>URL TO QRCODE tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+</head>
+<body>
+<div class="main" id="main"></div>
+<script type="text/javascript">
+$(document).ready(function(){
+ var text = window.location.href.match(/text=([\s\S]*)/i)[1];
+$('#main').qrcode({
+    "size": 500,
+    "color": "#000000",
+    "text": text,
+    "render": "image"
+});
+});
+</script>
+</body></html>

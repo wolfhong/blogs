@@ -1,0 +1,57 @@
+---
+layout: layout
+---
+<main id="primary">
+    <div class="post-content">
+        <div id="archives">
+        <% var year = 0, month = 0, nav = ""; %>
+        <% page.posts.sort("date", "desc").forEach(function(post) { %>
+            <% var pyear = post.date.year(), pmonth = post.date.month() + 1; %>
+            <% if(month != pmonth || year != pyear) { %>
+                <% if(year) { %>
+                </div><!-- enclosing tag for div.archive-title -->
+            </div><!-- enclosing tag for div.archives -->
+                <% } %>
+                <%
+                    if(year != pyear) {
+                        if(year) {
+                            nav += '</ul>'; // enclosing tag for ul.months
+                            nav += '</li>'; // enclosing tag for li.year
+                        }
+                        nav += '<li class="year">';
+                        nav += '<a href="#archive-' + pyear + '-' + pmonth + '" class="year-anchor">' + pyear + '</a>';
+                        nav += '<ul class="months">';
+                        year = pyear;
+                    }
+                    if(month != pmonth) {
+                        nav += '<li class="month" id="anchor-' + pyear + '-' + pmonth + '">';
+                        nav += '<a href="#archive-' + pyear + '-' + pmonth + '" class="month-anchor">' + pmonth + '</a>';
+                        nav += '</li>';
+                        month = pmonth;
+                    }
+                %>
+            <div class="archive-title" id="archive-<%- year %>-<%- month %>">
+                <h3 class="archive-time"><%- year %>-<%- month %></h3>
+                <div class="archives">
+            <% } %>
+                    <div class="brick">
+                        <span class="time"><%- month %>-<%- post.date.date() %></span>
+                        <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+                    </div>
+        <% }); %>
+        <% if(year) { %>
+                </div><!-- enclosing tag for the last div.archive-title -->
+            </div><!-- enclosing tag for the last div.archives -->
+        <% } %>
+        </div>
+    </div>
+    <% if(nav) { %>
+    <ul id="archive-nav">
+        <%- nav %>
+        <% if(year) { %>
+            </ul><!-- enclosing tag for ul.months -->
+        </li><!-- enclosing tag for li.year -->
+        <% } %>
+    </ul>
+    <% } %>
+</main>

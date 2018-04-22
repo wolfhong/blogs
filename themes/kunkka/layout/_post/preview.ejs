@@ -1,0 +1,40 @@
+<%
+   var post_class = 'post';
+   if(!theme.full_content && post.thumbnail) {post_class += ' post-has-thumbnail';}
+   if(theme.full_content) {post_class += 'full-content';}
+%>
+<article class="<%- trim(post_class) %>">
+    <header class="post-header">
+        <h1 class="post-title">
+            <% if(post.link) { %><a href="<%- post.link %>" title="<%= post.link %>"><%= post.link %></a>
+            <% } else { %><a href="<%- url_for(post.path) %>" title="<%= post.title || __('untitled') %>"><%= post.title || __('untitled') %></a><% } %>
+        </h1>
+    </header>
+    <%- partial('_post/meta', {page: post, has_vcount: false}) %>
+    <div class="post-body post-preview">
+    <% if (theme.full_content) { %>
+        <%- post.content %>
+    <% } else { %>
+        <% if (post.thumbnail) { %>
+        <div class="post-thumbnail">
+            <a href="<%- url_for(post.path) %>" rel="bookmark">
+                <img src="<%- post.thumbnail %>"
+                     alt="<%= post.title %>" width="130" height="130"/>
+            </a>
+        </div>
+        <% } %>
+        <div class="post-content">
+        <% if(post.excerpt) { %>
+            <%- post.excerpt %>
+        <% } else { %>
+            <% var br = post.content.indexOf('\n') %>
+            <% if(br < 0) { %>
+                <%- post.content %>
+            <% } else { %>
+            <p><%- strip_html(post.content.substring(0, br)) %></p>
+            <% } %>
+        <% } %>
+        </div>
+    <% } %>
+    </div>
+</article>

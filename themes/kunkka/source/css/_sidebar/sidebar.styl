@@ -1,0 +1,45 @@
+#sidebar {
+    float: right;
+    padding-left: 40px;
+    width: 30%;
+    &.fixed {
+        position: fixed;
+        top: 20px;
+    }
+}
+
+.widget {
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    .avatar {
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+    span {color: #aaa;}
+    ul {
+        padding: 10px 0;
+        &.list {
+            padding: 10px 0 10px 15px;
+            li {list-style: square;}
+        }
+    }
+    a {color: #666;}
+    li, p {font: 13px/1.8em;}
+    p {color: #999;}
+}
+
+.widget-title {
+    color: #636363;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+#friend-links ul li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    zoom: 1;
+}

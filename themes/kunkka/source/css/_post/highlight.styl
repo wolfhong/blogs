@@ -1,0 +1,79 @@
+pre, .highlight {
+    background-color: $highlight-background;
+    margin: 20px 0;
+    padding: 15px;
+    overflow-x: auto;
+    font-size: 16px;
+    color: $highlight-foreground;
+    line-height: 1.6em;
+}
+
+pre, code {font-family: $CodeFont;}
+
+code {
+    display: inline;
+    margin: 0 0;
+    padding: 1px 5px;
+    border: 1px solid #ccc;
+    word-break: keep-all;
+    background-color: #eee;
+/*     text-shadow: 0 1px #fff; */
+}
+
+pre code {
+    border: none;
+    background: none;
+    text-shadow: none;
+    padding: 0 0.3em;
+}
+
+.highlight {
+    border-radius: 10px;
+    border: 3px solid #eee;
+    pre {
+        border: none;
+        margin: 0;
+        padding: 1px;
+    }
+    table {
+        margin: 0;
+        width: auto;
+        border: none;
+    }
+    td {
+        border: none;
+        padding: 0;
+    }
+    figcaption{
+        &:before, &:after {
+            content: " ";
+            display: table;
+        }
+        &:after { clear: both; }
+        font-size: 0.85em;
+        color: $highlight-comment;
+        line-height: 1em;
+        margin-bottom: 1em;
+        a {float: right;}
+    }
+    .gutter pre {
+        color: #666;
+        text-align: right;
+        padding-right: 20px;
+    }
+    .line {
+        height: 16px * 1.6em;
+        &.marked {color: $highlight-blue;}
+    }
+    .comment {color: $highlight-comment;}
+    .variable, .template-variable, .tag, .name, .regexp, .deletion, .selector-id, .selector-class {color: $highlight-red;}
+    .number, .preprocessor, .built_in, .builtin-name, .literal, .params, .constant, .command, .meta, .link, .type, .selector-pseudo, .doctype, .meta-keyword, .meta-string {color: $highlight-orange;}
+    .string, .symbol, .special, .number, .formula, .bullet, .addition {color: $highlight-green;}
+    .attribute, .attr, .quote {color: $highlight-yellow;}
+    .title, .function {color: $highlight-aqua;}
+    .section, .selector-attr, .template-tag {color: $highlight-blue;}
+    .keyword, .selector-tag {color: $highlight-purple;}
+    .emphasis {font-style: italic;}
+    .strong {font-weight: bold;}
+    .subst {color: black;}
+}
