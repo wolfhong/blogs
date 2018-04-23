@@ -5,7 +5,7 @@ toc: true
 categories:
 - 其他
 tags:
-- Emoji
+- emoji
 ---
 
 我在[虎嗅上](https://www.huxiu.com/article/163386.html)看过一篇关于Emoji的趣闻, 特别有意思, 在这里跟大家分享一下。里面提到了Emoji是怎么诞生的。

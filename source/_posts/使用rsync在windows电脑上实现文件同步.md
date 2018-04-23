@@ -9,7 +9,7 @@ tags:
 - windows
 ---
 
-本文将在一台Linux服务器上搭建rsync文件同步服务，然后在另一台windows电脑上保持与A的单向同步。
+本文将在一台Linux服务器A上搭建rsync文件同步服务，然后在另一台windows电脑B上保持与A的单向同步。
 
 ## 一个具体的案例
 
