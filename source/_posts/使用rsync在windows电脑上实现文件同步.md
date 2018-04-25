@@ -5,8 +5,8 @@ toc: true
 categories:
 - 其他
 tags:
-- rsync
 - windows
+- 解决方案
 ---
 
 本文将在一台Linux服务器A上搭建rsync文件同步服务，然后在另一台windows电脑B上保持与A的单向同步。

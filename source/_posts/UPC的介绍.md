@@ -194,32 +194,35 @@ EAN-13的编码内容，由四个部分组成:
 | 000～019 <br> 030～039 <br> 060～139  | 美国 |
 |  300～379  | 法国 |
 |  400～440  | 德国 |
-|  978～979  | 图书 |
+|  978～979  | [图书ISBN][isbn] |
+|  977       | [期刊ISSN][issn] |
 
-#### ISBN是EAN-13的子集
+### ISBN是EAN-13的子集
 
-ISBN（International Standard Book Number，国际标准书号）是非期刊书籍上的条形码，其实只是EAN-13的子集。前三位在`978～979`范围内。
+ISBN（International Standard Book Number，国际标准书号）是非期刊书籍上的条形码，其实只是EAN-13的子集(只讨论现使用的ISBN-13)。前三位在`978～979`范围内。
 
 一个ISBN有一个或一份相应的出版物与之对应。一本书的每一版或其他的变化，能够申请到一个新的ISBN。
 新版本如果在原来旧版的基础上没有内容上太大的变动，在出版时不会得到新的ISBN。
 当一本书同时有平装本与精装本出版时，平装本的国际标准书号不得用于精装本，反之亦然。
 
-ISBN的编码由五个部位组成:
-* 前三位(第一位是导入位，前三位的范围是978～979)
-* 出版国家或者语言代码: 第4-5位
-* 出版商代码: 第6-9位
-* 书所分配到的号码: 第10-12位
-* 检查码(同EAN-13)
+ISBN的编码由五个部位组成，且每部位是不定长的，有时候会使用`-`符号进行分割方便阅读:
+* 前三位(第一位是导入位`9`，前三位目前的范围是978～979)
+* 出版国家或者语言代码
+* 出版商代码
+* 书所分配到的号码
+* 最后一位为检查码(同EAN-13)
 
 ### 参考
 
 * [《编码:隐匿在计算机软硬件背后的语言》][book]
 * [维基百科:UPC变种][wiki-variation]
 * [维基百科:EAN](https://en.wikipedia.org/wiki/International_Article_Number#Binary_encoding_of_data_digits_into_EAN-13_barcode)
-* [维基百科:ISBN](https://zh.wikipedia.org/wiki/国际标准书名)
+* [维基百科:ISBN](https://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7)
 * [Andy's Barcode World][appsbarcode]
 
 [book]: http://www.amazon.cn/gp/product/B009RSXIB4/
 [wiki-variation]: https://en.wikipedia.org/wiki/Universal_Product_Code#Variations
 [wiki-check]: https://en.wikipedia.org/wiki/Universal_Product_Code#Check_digit_calculation
 [appsbarcode]: http://www.appsbarcode.com/EAN-13.php
+[isbn]: http://appsbarcode.com/ISBN.php
+[issn]: http://appsbarcode.com/ISSN.php

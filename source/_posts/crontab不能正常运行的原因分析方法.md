@@ -5,7 +5,6 @@ toc: true
 categories:
 - devops
 tags:
-- crontab
 - linux
 ---
 

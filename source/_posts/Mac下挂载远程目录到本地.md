@@ -4,7 +4,7 @@ date: 2016-11-16 01:06:50
 categories:
 - 其他
 tags:
-- sshfs
+- 解决方案
 - mac
 ---
 
