@@ -47,7 +47,7 @@ tags:
 
 实际中,你很少会用到`__new__`，除非你希望能够控制类的创建。
 如果要讲解`__new__`，往往需要牵扯到`metaclass`(元类)的介绍。
-如果你有兴趣深入,可以参考我的另一篇博客: [理解Python的metaclass](/posts/理解python的metaclass/)
+如果你有兴趣深入,可以参考我的另一篇博客: [理解Python的metaclass][my-metaclass]
 
 对于`__new__`的重载，[Python文档中](https://www.python.org/download/releases/2.2/descrintro/#__new__)也有了详细的介绍。
 
@@ -872,3 +872,5 @@ pickling并不是Python的內建类型，它支持所有实现pickle协议(可�
 - `__coerce__`因存在冗余而废弃.
 - `__cmp__`因存在冗余而废弃.
 - `__nonzero__`改名为`__bool__`.
+
+[my-metaclass]: /posts/intro-python-metaclass/
