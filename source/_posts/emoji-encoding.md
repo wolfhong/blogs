@@ -53,24 +53,26 @@ VS-15 和 VS-16 加在基础Emoji字符的后面, 可以起到控制作用(前�
 
 用一段Python代码来演示该例子:
 
-    # -*- coding: utf-8 -*-
-    # more info to see https://en.wikipedia.org/wiki/Emoji
-    # 符号分别是上图(截图自wiki)中的符号, 最后再加上一个“狗”的Emoji
-    sample_list = [u'\u2139', u'\u231B', u'\u26A0', u'\u2712', u'\u2764', u'\U0001F004', u'\U0001F21A', u'\U0001f436', ]
+``` python
+# -*- coding: utf-8 -*-
+# more info to see https://en.wikipedia.org/wiki/Emoji
+# 符号分别是上图(截图自wiki)中的符号, 最后再加上一个“狗”的Emoji
+sample_list = [u'\u2139', u'\u231B', u'\u26A0', u'\u2712', u'\u2764', u'\U0001F004', u'\U0001F21A', u'\U0001f436', ]
 
-    # 输出原样式
-    for code in sample_list:
-        print code,
-    print
-    print '-' * 20
-    # 后面加上VS-15
-    for code in sample_list:
-        print (code + u'\uFE0E'),
-    print
-    print '-' * 20
-    # 后面加上VS-16
-    for code in sample_list:
-        print (code + u'\uFE0F'),
+# 输出原样式
+for code in sample_list:
+    print code,
+print
+print '-' * 20
+# 后面加上VS-15
+for code in sample_list:
+    print (code + u'\uFE0E'),
+print
+print '-' * 20
+# 后面加上VS-16
+for code in sample_list:
+    print (code + u'\uFE0F'),
+```
 
 其输出如下图, 第一行是原样式，第二行是加上VS-15后的样式，第三行是加上VS-16后的样式:
 
@@ -85,24 +87,26 @@ VS-15 和 VS-16 加在基础Emoji字符的后面, 可以起到控制作用(前�
 
 使用Python代码演示 `FITZ-*` 和 `ZWJ`:
 
-    # -*- coding: utf-8 -*-
-    # more info to see https://en.wikipedia.org/wiki/Emoji
+``` python
+# -*- coding: utf-8 -*-
+# more info to see https://en.wikipedia.org/wiki/Emoji
 
-    # man_list 分别是: 男孩  女孩  男人  女人
-    man_list = [u'\U0001F466', u'\U0001F467', u'\U0001F468', u'\U0001F469']
-    # skin_color_list 分别是: 空字符串,表示默认  白种人 -->(不断加深肤色)  黑种人
-    skin_color_list = ['', u'\U0001F3FB', u'\U0001F3FC', u'\U0001F3FD', u'\U0001F3FE', u'\U0001F3FF', ]
-    for man in man_list:
-        for color in skin_color_list:
-            print (man + color),
-        print
-        print '-' * 20
+# man_list 分别是: 男孩  女孩  男人  女人
+man_list = [u'\U0001F466', u'\U0001F467', u'\U0001F468', u'\U0001F469']
+# skin_color_list 分别是: 空字符串,表示默认  白种人 -->(不断加深肤色)  黑种人
+skin_color_list = ['', u'\U0001F3FB', u'\U0001F3FC', u'\U0001F3FD', u'\U0001F3FE', u'\U0001F3FF', ]
+for man in man_list:
+    for color in skin_color_list:
+        print (man + color),
+    print
+    print '-' * 20
 
-    # Emoji的连接符<U+200D>  (英文名为: ZERO WIDTH JOINER, 简写ZWJ )
-    # 如果系统支持: 连接(男人 + ZWJ + 女人 + ZWJ + 女孩)
-    print u'\U0001F468' + u'\u200D' + u'\U0001F469' + u'\u200D' + u'\U0001F467'
-    # 如果系统不支持: 连接(狗 + ZWJ + 猫 + ZWJ + 老鼠)
-    print u'\U0001f436' + u'\u200D' + u'\U0001f431' + u'\u200D' + u'\U0001f42d'
+# Emoji的连接符<U+200D>  (英文名为: ZERO WIDTH JOINER, 简写ZWJ )
+# 如果系统支持: 连接(男人 + ZWJ + 女人 + ZWJ + 女孩)
+print u'\U0001F468' + u'\u200D' + u'\U0001F469' + u'\u200D' + u'\U0001F467'
+# 如果系统不支持: 连接(狗 + ZWJ + 猫 + ZWJ + 老鼠)
+print u'\U0001f436' + u'\u200D' + u'\U0001f431' + u'\u200D' + u'\U0001f42d'
+```
 
 其输出如下图:
 
@@ -158,26 +162,28 @@ VS-15 和 VS-16 加在基础Emoji字符的后面, 可以起到控制作用(前�
 
 下面使用Python代码来演示如何使用正则表达式替换(或找出)字符串中的Emoji:
 
-    # -*- coding: utf-8 -*-
-    import re
-    try:
-        # Wide UCS-4 build
-        myre = re.compile(u'['
-            u'\U0001F300-\U0001F64F'
-            u'\U0001F680-\U0001F6FF'
-            u'\u2600-\u2B55]+',
-            re.UNICODE)
-    except re.error:
-        # Narrow UCS-2 build
-        myre = re.compile(u'('
-            u'\ud83c[\udf00-\udfff]|'
-            u'\ud83d[\udc00-\ude4f\ude80-\udeff]|'
-            u'[\u2600-\u2B55])+',
-            re.UNICODE)
+``` python
+# -*- coding: utf-8 -*-
+import re
+try:
+    # Wide UCS-4 build
+    myre = re.compile(u'['
+        u'\U0001F300-\U0001F64F'
+        u'\U0001F680-\U0001F6FF'
+        u'\u2600-\u2B55]+',
+        re.UNICODE)
+except re.error:
+    # Narrow UCS-2 build
+    myre = re.compile(u'('
+        u'\ud83c[\udf00-\udfff]|'
+        u'\ud83d[\udc00-\ude4f\ude80-\udeff]|'
+        u'[\u2600-\u2B55])+',
+        re.UNICODE)
 
-    sss = u'I have a dog \U0001f436 . You have a cat \U0001f431 ! I smile \U0001f601 to you!'
-    print myre.sub('[Emoji]', sss)  # 替换字符串中的Emoji
-    print myre.findall(sss)         # 找出字符串中的Emoji
+sss = u'I have a dog \U0001f436 . You have a cat \U0001f431 ! I smile \U0001f601 to you!'
+print myre.sub('[Emoji]', sss)  # 替换字符串中的Emoji
+print myre.findall(sss)         # 找出字符串中的Emoji
+```
 
 输出如下:
 

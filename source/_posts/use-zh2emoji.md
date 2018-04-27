@@ -29,6 +29,7 @@ tags:
 
 该部分的python实现代码如下:
 
+``` python
     ascii_char = list('1234567890abcd ')  # 任意多个字符,灰度值的映射区间
 
     def select_ascii_char(r, g, b):
@@ -39,6 +40,7 @@ tags:
         # ascii_char中的一个字符所能表示的灰度值区间
         unit = 256.0 / len(ascii_char)
         return ascii_char[int(gray/unit)]
+```
 
 `select_ascii_char` 就实现了将一个像素点映射成一个具体的自定义字符char.
 
@@ -55,8 +57,10 @@ tags:
 
 一个"茴"字我有N多种写法:
 
+``` python
     print image2print(word2image(u'茴'), u'❤️ ')
     print image2print(word2image(u'茴'), u'茴', width=40)
+```
 
 输出结果如下:
 

@@ -24,19 +24,23 @@ tags:
 python中类的概念，是借鉴自smalltalk语言。
 在大部分语言中，类指的是"描述如何产生一个对象(object)"的一段代码，这对于python也是如此。
 
-    >>> class ObjectCreator(object):
-    ...       pass
-    ...
-    >>> my_object = ObjectCreator()
-    >>> print(my_object)
-    <__main__.ObjectCreator object at 0x8974f2c>
+``` python
+>>> class ObjectCreator(object):
+...     pass
+...
+>>> my_object = ObjectCreator()
+>>> print(my_object)
+<__main__.ObjectCreator object at 0x8974f2c>
+```
 
 但是,在python中，类远不止如此，类同时也是对象。
 当你遇到关键词`class`的时候，python就会自动执行产生一个对象。下面的代码段中:
 
-    >>> class ObjectCreator(object):
-    ...       pass
-    ...
+``` python
+>>> class ObjectCreator(object):
+...     pass
+...
+```
 
 python在内存中产生了一个名叫做"ObjectCreator"的对象。这个对象(类)自身拥有产生对象(实例instance)的能力。 这就是为什么称呼这东西(后面遇到容易混淆的地方,我们称之为:类对象)也是类的原因。同时，它也是一个对象，因此你可以对它做如下操作:
 
@@ -47,28 +51,30 @@ python在内存中产生了一个名叫做"ObjectCreator"的对象。这个对�
 
 举例：
 
-    >>> print(ObjectCreator) # 你可以打印一个类,因为它同时也是对象
-    <class '__main__.ObjectCreator'>
+``` python
+>>> print(ObjectCreator) # 你可以打印一个类,因为它同时也是对象
+<class '__main__.ObjectCreator'>
 
-    >>> def echo(o):
-    ...     print(o)
-    ...
-    >>> echo(ObjectCreator) # 作为参数传值给函数
-    <class '__main__.ObjectCreator'>
+>>> def echo(o):
+...     print(o)
+...
+>>> echo(ObjectCreator) # 作为参数传值给函数
+<class '__main__.ObjectCreator'>
 
-    >>> print(hasattr(ObjectCreator, 'new_attribute'))
-    False
-    >>> ObjectCreator.new_attribute = 'foo' # you can add attributes to a class
-    >>> print(hasattr(ObjectCreator, 'new_attribute'))
-    True
-    >>> print(ObjectCreator.new_attribute)
-    foo
+>>> print(hasattr(ObjectCreator, 'new_attribute'))
+False
+>>> ObjectCreator.new_attribute = 'foo' # you can add attributes to a class
+>>> print(hasattr(ObjectCreator, 'new_attribute'))
+True
+>>> print(ObjectCreator.new_attribute)
+foo
 
-    >>> ObjectCreatorMirror = ObjectCreator # 将类赋值给变量
-    >>> print(ObjectCreatorMirror.new_attribute)
-    foo
-    >>> print(ObjectCreatorMirror())
-    <__main__.ObjectCreator object at 0x8997b4c>
+>>> ObjectCreatorMirror = ObjectCreator # 将类赋值给变量
+>>> print(ObjectCreatorMirror.new_attribute)
+foo
+>>> print(ObjectCreatorMirror())
+<__main__.ObjectCreator object at 0x8997b4c>
+```
 
 
 ## 动态创建类
@@ -77,21 +83,23 @@ python在内存中产生了一个名叫做"ObjectCreator"的对象。这个对�
 
 首先，我们使用`class`关键字定义一个产生类的函数:
 
-    >>> def choose_class(name):
-    ...     if name == 'foo':
-    ...         class Foo(object):
-    ...             pass
-    ...         return Foo # return the class, not an instance
-    ...     else:
-    ...         class Bar(object):
-    ...             pass
-    ...         return Bar
-    ...
-    >>> MyClass = choose_class('foo')
-    >>> print(MyClass) # the function returns a class, not an instance
-    <class '__main__.Foo'>
-    >>> print(MyClass()) # you can create an object from this class
-    <__main__.Foo object at 0x89c6d4c>
+``` python
+>>> def choose_class(name):
+...     if name == 'foo':
+...         class Foo(object):
+...             pass
+...         return Foo # return the class, not an instance
+...     else:
+...         class Bar(object):
+...             pass
+...         return Bar
+...
+>>> MyClass = choose_class('foo')
+>>> print(MyClass) # the function returns a class, not an instance
+<class '__main__.Foo'>
+>>> print(MyClass()) # you can create an object from this class
+<__main__.Foo object at 0x89c6d4c>
+```
 
 这很容易理解吧。但是，这并不那么动态啊。我们还是需要自己来写这个类的代码。
 
@@ -99,29 +107,33 @@ python在内存中产生了一个名叫做"ObjectCreator"的对象。这个对�
 
 先来说说你所认识的`type`。这个古老而好用的函数，可以让我们知道一个对象的类型是什么。
 
-    >>> print(type(1))
-    <type 'int'>
-    >>> print(type("1"))
-    <type 'str'>
-    >>> print(type(ObjectCreator))
-    <type 'type'>
-    >>> print(type(ObjectCreator()))
-    <class '__main__.ObjectCreator'>
+``` python
+>>> print(type(1))
+<type 'int'>
+>>> print(type("1"))
+<type 'str'>
+>>> print(type(ObjectCreator))
+<type 'type'>
+>>> print(type(ObjectCreator()))
+<class '__main__.ObjectCreator'>
+```
 
 实际上，`type`还有一个完全不同的功能，它可以在运行时产生类。`type`可以传入一些参数，然后返回一个类。(好吧，必须承认，根据不同的传入参数，一个相同的函数`type`居然会有两个完全不同的作用，这很愚蠢。不过python这样做是为了保持向后兼容性。)
 
 下面举例`type`创建类的用法。首先，对于类一般是这么定义的:
 
-    >>> class MyShinyClass(object):
-    ...       pass
+``` python
+>>> class MyShinyClass(object):
+...     pass
 
 在下面，MyShinyClass也可以这样子被创建出来,并且跟上面的创建方法有一样的表现:
 
-    >>> MyShinyClass = type('MyShinyClass', (), {}) # returns a class object
-    >>> print(MyShinyClass)
-    <class '__main__.MyShinyClass'>
-    >>> print(MyShinyClass()) # create an instance with the class
-    <__main__.MyShinyClass object at 0x8997cec>
+>>> MyShinyClass = type('MyShinyClass', (), {}) # returns a class object
+>>> print(MyShinyClass)
+<class '__main__.MyShinyClass'>
+>>> print(MyShinyClass()) # create an instance with the class
+<__main__.MyShinyClass object at 0x8997cec>
+```
 
 `type`创建类需要传入三个参数,分别为:
 
@@ -131,28 +143,35 @@ python在内存中产生了一个名叫做"ObjectCreator"的对象。这个对�
 
 下面来点复杂的，来更好的理解`type`传入的三个参数:
 
-    class Foo(object):
-        bar = True
-
-        def echo_bar(self):
-            print(self.bar)
-
-
-等价于:
+``` python
+class Foo(object):
+    bar = True
 
     def echo_bar(self):
         print(self.bar)
-
-    Foo = type('Foo', (), {'bar':True, 'echo_bar': echo_bar})
-
-想要看点有继承关系的类的实现,来:
-
-    class FooChild(Foo):
-        pass
+```
 
 等价于:
 
-    FooChild = type('FooChild', (Foo, ), {})
+``` python
+def echo_bar(self):
+    print(self.bar)
+
+Foo = type('Foo', (), {'bar':True, 'echo_bar': echo_bar})
+```
+
+想要看点有继承关系的类的实现,来:
+
+``` python
+class FooChild(Foo):
+    pass
+```
+
+等价于:
+
+``` python
+FooChild = type('FooChild', (Foo, ), {})
+```
 
 回顾一下我们学到哪了: 在python中，类就是对象，并且你可以在运行的时候动态创建类.
 
@@ -170,12 +189,16 @@ metaclass 就是创建类的那家伙。(事实上，`type`就是一个metaclass
 
 ![图片](http://static.extremevision.com.cn/membercms/python_metaclass_img1.png)
 
+``` python
     MyClass = MetaClass()
     MyObject = MyClass()
+```
 
 也可以用我们上面学到的`type`来表示:
 
+``` python
     MyClass = type('MyClass', (), {})
+```
 
 说白了,函数`type`就是一个特殊的metaclass.
 python在背后使用`type`创造了所有的类。`type`是所有类的metaclass.
@@ -184,6 +207,7 @@ python在背后使用`type`创造了所有的类。`type`是所有类的metaclas
 
 在python中，一切皆为对象：整数、字符串、函数、类.所有这些对象，都是通过类来创造的.
 
+``` python
     >>> age = 35
     >>> age.__class__
     <type 'int'>
@@ -200,9 +224,11 @@ python在背后使用`type`创造了所有的类。`type`是所有类的metaclas
     >>> b = Bar()
     >>> b.__class__
     <class '__main__.Bar'>
+```
 
 那么，`__class__`的`__class__`又是什么呢?
 
+``` python
     >>> age.__class__.__class__
     <type 'type'>
     >>> name.__class__.__class__
@@ -211,6 +237,7 @@ python在背后使用`type`创造了所有的类。`type`是所有类的metaclas
     <type 'type'>
     >>> b.__class__.__class__
     <type 'type'>
+```
 
 metaclass就是创造类对象的工具.如果你喜欢，你也可以称之为"类的工厂".
 
@@ -221,9 +248,11 @@ type是python內置的metaclass。不过，你也可以编写自己的metaclass.
 
 我们可以在一个类中加入 `__metaclass__` 属性.
 
+``` python
     class Foo(object):
         __metaclass__ = something...
-        [...]
+        ......  # 省略
+```
 
 当你这么做了，python就会使用metaclass来创造类:Foo。
 
@@ -237,8 +266,10 @@ python会在类定义中寻找`__metaclass__` 。如果找到了，python就会�
 
 当你写如下代码的时候:
 
+``` python
     class Foo(Bar):
         pass
+```
 
 python做了以下事情:
 
@@ -263,6 +294,7 @@ Foo中有`__metaclass__`这个属性吗？
 
 在模块的层次定义metaclass,模块中的所有类都会使用它来创造类。我们只需要告诉metaclass,将所有的属性转化为大写。
 
+``` python
     # type也是一个类，我们可以继承它.
     class UpperAttrMetaclass(type):
         # __new__ 是在__init__之前被调用的特殊方法
@@ -283,11 +315,13 @@ Foo中有`__metaclass__`这个属性吗？
                 else:
                     uppercase_attr[name] = val
             return type(future_class_name, future_class_parents, uppercase_attr)
+```
 
 这里的方式其实不是OOP(面向对象编程).因为我们直接调用了type,而不是改写父类的`__type__`方法.
 
 所以我们也可以这样子处理:
 
+``` python
     class UpperAttrMetaclass(type):
 
         def __new__(upperattr_metaclass, future_class_name,
@@ -301,12 +335,15 @@ Foo中有`__metaclass__`这个属性吗？
                     uppercase_attr[name] = val
             return type.__new__(upperattr_metaclass, future_class_name,
                                 future_class_parents, uppercase_attr)
+```
 
 这样子看,我们只是复用了 `type.__new__`方法,这就是我们熟悉的基本的OOP编程，没什么魔法可言.
 
 你可能注意到,`__new__`方法相比于
 
+``` python
     type(future_class_name, future_class_parents, future_class_attr)
+```
 
 多了一个参数: upperattr_metaclass, 请别在意,这没什么特别的: `__new__`总是将"它要定义的类"作为第一个参数。
 
@@ -317,6 +354,7 @@ Foo中有`__metaclass__`这个属性吗？
 
 (我们同时使用常见的super来让代码更清晰)
 
+``` python
     class UpperAttrMetaclass(type):
 
         def __new__(cls, clsname, bases, attrs):
@@ -327,6 +365,7 @@ Foo中有`__metaclass__`这个属性吗？
                 else:
                     uppercase_attr[name] = val
             return super(UpperAttrMetaclass, cls).__new__(cls, clsname, bases, attrs)
+```
 
 使用了 metaclass 的代码是比较复杂，但我们使用它的原因并不是为了复杂, 而是因为我们通常会使用 metaclass  去做一些晦涩的事情,比如, 依赖于自省，控制继承等等。
 
@@ -347,14 +386,18 @@ metaclass 的一个主要用途就是构建API。Django(一个python写的web框
 
 用Django先定义了以下Model:
 
+``` python
     class Person(models.Model):
         name = models.CharField(max_length=30)
         age = models.IntegerField()
+```
 
 然后执行下面代码:
 
+``` python
     guy = Person.objects.get(name='bob')
     print guy.age  # result is 35
+```
 
 这里打印的输出并不是`IntegerField`，而是一个`int`，`int`是从数据库中获取的.
 

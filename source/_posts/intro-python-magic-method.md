@@ -36,14 +36,16 @@ tags:
 
 `__new__`方法总是需要返回该类的一个实例，而`__init__`不能返回除了None的任何值。比如下面例子:
 
-    class Foo(object):
+``` python
+class Foo(object):
 
-        def __init__(self):
-            print 'foo __init__'
-            return None  # 必须返回None,否则抛TypeError
+    def __init__(self):
+        print 'foo __init__'
+        return None  # 必须返回None,否则抛TypeError
 
-        def __del__(self):
-            print 'foo __del__'
+    def __del__(self):
+        print 'foo __del__'
+```
 
 实际中,你很少会用到`__new__`，除非你希望能够控制类的创建。
 如果要讲解`__new__`，往往需要牵扯到`metaclass`(元类)的介绍。
@@ -58,11 +60,13 @@ tags:
 
 怎么来理解这句话呢? 继续用上面的Foo类的代码为例:
 
-    foo = Foo()
-    foo.__del__()
-    print foo
-    del foo
-    print foo  # NameError, foo is not defined
+``` python
+foo = Foo()
+foo.__del__()
+print foo
+del foo
+print foo  # NameError, foo is not defined
+```
 
 如果调用了`foo.__del__()`，对象本身仍然存在. 但是调用了`del foo`, 就再也没有foo这个对象了.
 
@@ -95,45 +99,51 @@ tags:
 
 例子说明`__setattr__`的无限递归错误:
 
-    def __setattr__(self, name, value):
-        self.name = value
-        # 每一次属性赋值时, __setattr__都会被调用，因此不断调用自身导致无限递归了。
+``` python
+def __setattr__(self, name, value):
+    self.name = value
+    # 每一次属性赋值时, __setattr__都会被调用，因此不断调用自身导致无限递归了。
+```
 
 因此正确的写法应该是:
 
-    def __setattr__(self, name, value):
-        self.__dict__[name] = value
+``` python
+def __setattr__(self, name, value):
+    self.__dict__[name] = value
+```
 
 `__delattr__`如果在其实现中出现`del self.name` 这样的代码也会出现"无限递归"错误，这是一样的原因。
 
 下面的例子很好的说明了上面介绍的4个魔术方法的调用情况:
 
-    class Access(object):
+``` python
+class Access(object):
 
-        def __getattr__(self, name):
-            print '__getattr__'
-            return super(Access, self).__getattr__(name)
+    def __getattr__(self, name):
+        print '__getattr__'
+        return super(Access, self).__getattr__(name)
 
-        def __setattr__(self, name, value):
-            print '__setattr__'
-            return super(Access, self).__setattr__(name, value)
+    def __setattr__(self, name, value):
+        print '__setattr__'
+        return super(Access, self).__setattr__(name, value)
 
-        def __delattr__(self, name):
-            print '__delattr__'
-            return super(Access, self).__delattr__(name)
+    def __delattr__(self, name):
+        print '__delattr__'
+        return super(Access, self).__delattr__(name)
 
-        def __getattribute__(self, name):
-            print '__getattribute__'
-            return super(Access, self).__getattribute__(name)
+    def __getattribute__(self, name):
+        print '__getattribute__'
+        return super(Access, self).__getattribute__(name)
 
-    access = Access()
-    access.attr1 = True  # __setattr__调用
-    access.attr1  # 属性存在,只有__getattribute__调用
-    try:
-        access.attr2  # 属性不存在, 先调用__getattribute__, 后调用__getattr__
-    except AttributeError:
-        pass
-    del access.attr1  # __delattr__调用
+access = Access()
+access.attr1 = True  # __setattr__调用
+access.attr1  # 属性存在,只有__getattribute__调用
+try:
+    access.attr2  # 属性不存在, 先调用__getattribute__, 后调用__getattr__
+except AttributeError:
+    pass
+del access.attr1  # __delattr__调用
+```
 
 
 ## 描述器对象
@@ -143,32 +153,34 @@ tags:
 我们知道，距离既可以用单位"米"表示,也可以用单位"英尺"表示。
 现在我们定义一个类来表示距离,它有两个属性: 米和英尺。
 
-    class Meter(object):
-        '''Descriptor for a meter.'''
-        def __init__(self, value=0.0):
-            self.value = float(value)
-        def __get__(self, instance, owner):
-            return self.value
-        def __set__(self, instance, value):
-            self.value = float(value)
+``` python
+class Meter(object):
+    '''Descriptor for a meter.'''
+    def __init__(self, value=0.0):
+        self.value = float(value)
+    def __get__(self, instance, owner):
+        return self.value
+    def __set__(self, instance, value):
+        self.value = float(value)
 
-    class Foot(object):
-        '''Descriptor for a foot.'''
-        def __get__(self, instance, owner):
-            return instance.meter * 3.2808
-        def __set__(self, instance, value):
-            instance.meter = float(value) / 3.2808
+class Foot(object):
+    '''Descriptor for a foot.'''
+    def __get__(self, instance, owner):
+        return instance.meter * 3.2808
+    def __set__(self, instance, value):
+        instance.meter = float(value) / 3.2808
 
-    class Distance(object):
-        meter = Meter()
-        foot = Foot()
+class Distance(object):
+    meter = Meter()
+    foot = Foot()
 
-    d = Distance()
-    print d.meter, d.foot  # 0.0, 0.0
-    d.meter = 1
-    print d.meter, d.foot  # 1.0 3.2808
-    d.meter = 2
-    print d.meter, d.foot  # 2.0 6.5616
+d = Distance()
+print d.meter, d.foot  # 0.0, 0.0
+d.meter = 1
+print d.meter, d.foot  # 1.0 3.2808
+d.meter = 2
+print d.meter, d.foot  # 2.0 6.5616
+```
 
 在上面例子中,在还没有对Distance的实例赋值前, 我们认为meter和foot应该是各自类的实例对象, 但是输出却是数值。这是因为`__get__`发挥了作用.
 
@@ -248,70 +260,74 @@ tags:
 
 下面举例，使用上面讲的魔术方法来实现Haskell语言中的一个数据结构。
 
-    # -*- coding: utf-8 -*-
-    class FunctionalList:
-        ''' 实现了内置类型list的功能,并丰富了一些其他方法: head, tail, init, last, drop, take'''
+``` python
+# -*- coding: utf-8 -*-
+class FunctionalList:
+    ''' 实现了内置类型list的功能,并丰富了一些其他方法: head, tail, init, last, drop, take'''
 
-        def __init__(self, values=None):
-            if values is None:
-                self.values = []
-            else:
-                self.values = values
+    def __init__(self, values=None):
+        if values is None:
+            self.values = []
+        else:
+            self.values = values
 
-        def __len__(self):
-            return len(self.values)
+    def __len__(self):
+        return len(self.values)
 
-        def __getitem__(self, key):
-            return self.values[key]
+    def __getitem__(self, key):
+        return self.values[key]
 
-        def __setitem__(self, key, value):
-            self.values[key] = value
+    def __setitem__(self, key, value):
+        self.values[key] = value
 
-        def __delitem__(self, key):
-            del self.values[key]
+    def __delitem__(self, key):
+        del self.values[key]
 
-        def __iter__(self):
-            return iter(self.values)
+    def __iter__(self):
+        return iter(self.values)
 
-        def __reversed__(self):
-            return FunctionalList(reversed(self.values))
+    def __reversed__(self):
+        return FunctionalList(reversed(self.values))
 
-        def append(self, value):
-            self.values.append(value)
-        def head(self):
-            # 获取第一个元素
-            return self.values[0]
-        def tail(self):
-            # 获取第一个元素之后的所有元素
-            return self.values[1:]
-        def init(self):
-            # 获取最后一个元素之前的所有元素
-            return self.values[:-1]
-        def last(self):
-            # 获取最后一个元素
-            return self.values[-1]
-        def drop(self, n):
-            # 获取所有元素，除了前N个
-            return self.values[n:]
-        def take(self, n):
-            # 获取前N个元素
-            return self.values[:n]
+    def append(self, value):
+        self.values.append(value)
+    def head(self):
+        # 获取第一个元素
+        return self.values[0]
+    def tail(self):
+        # 获取第一个元素之后的所有元素
+        return self.values[1:]
+    def init(self):
+        # 获取最后一个元素之前的所有元素
+        return self.values[:-1]
+    def last(self):
+        # 获取最后一个元素
+        return self.values[-1]
+    def drop(self, n):
+        # 获取所有元素，除了前N个
+        return self.values[n:]
+    def take(self, n):
+        # 获取前N个元素
+        return self.values[:n]
+```
 
 我们再举个例子，实现Perl语言的AutoVivification,它会在你每次引用一个值未定义的属性时为你自动创建数组或者字典。
 
-    class AutoVivification(dict):
-        """Implementation of perl's autovivification feature."""
-        def __missing__(self, key):
-            value = self[key] = type(self)()
-            return value
+``` python
+class AutoVivification(dict):
+    """Implementation of perl's autovivification feature."""
+    def __missing__(self, key):
+        value = self[key] = type(self)()
+        return value
 
-    weather = AutoVivification()
-    weather['china']['guangdong']['shenzhen'] = 'sunny'
-    weather['china']['hubei']['wuhan'] = 'windy'
-    weather['USA']['California']['Los Angeles'] = 'sunny'
-    print weather
+weather = AutoVivification()
+weather['china']['guangdong']['shenzhen'] = 'sunny'
+weather['china']['hubei']['wuhan'] = 'windy'
+weather['USA']['California']['Los Angeles'] = 'sunny'
+print weather
 
-    结果输出:{'china': {'hubei': {'wuhan': 'windy'}, 'guangdong': {'shenzhen': 'sunny'}}, 'USA':    {'California': {'Los Angeles': 'sunny'}}}
+# 结果输出:{'china': {'hubei': {'wuhan': 'windy'}, 'guangdong': {'shenzhen': 'sunny'}}, 'USA':    {'California': {'Los Angeles': 'sunny'}}}
+```
 
 在Python中，关于自定义容器的实现还有更多实用的例子，但只有很少一部分能够集成在Python标准库中，比如[Counter, OrderedDict等](https://docs.python.org/2/library/collections.html)
 
@@ -320,8 +336,10 @@ tags:
 
 `with`声明是从Python2.5开始引进的关键词。你应该遇过这样子的代码:
 
-    with open('foo.txt') as bar:
-        # do something with bar
+``` python
+with open('foo.txt') as bar:
+    # do something with bar
+```
 
 在with声明的代码段中，我们可以做一些对象的开始操作和清除操作,还能对异常进行处理。
 这需要实现两个魔术方法: `__enter__` 和 `__exit__`。
@@ -340,32 +358,36 @@ tags:
 
 这该示例中，IndexError始终会被隐藏，而TypeError始终会抛出。
 
-    class DemoManager(object):
+``` python
+class DemoManager(object):
 
-        def __enter__(self):
-            pass
+    def __enter__(self):
+        pass
 
-        def __exit__(self, ex_type, ex_value, ex_tb):
-            if ex_type is IndexError:
-                print ex_value.__class__
-                return True
-            if ex_type is TypeError:
-                print ex_value.__class__
-                return  # return None
+    def __exit__(self, ex_type, ex_value, ex_tb):
+        if ex_type is IndexError:
+            print ex_value.__class__
+            return True
+        if ex_type is TypeError:
+            print ex_value.__class__
+            return  # return None
 
-    with DemoManager() as nothing:
-        data = [1, 2, 3]
-        data[4]  # raise IndexError, 该异常被__exit__处理了
+with DemoManager() as nothing:
+    data = [1, 2, 3]
+    data[4]  # raise IndexError, 该异常被__exit__处理了
 
-    with DemoManager() as nothing:
-        data = [1, 2, 3]
-        data['a']  # raise TypeError, 该异常没有被__exit__处理
+with DemoManager() as nothing:
+    data = [1, 2, 3]
+    data['a']  # raise TypeError, 该异常没有被__exit__处理
 
-    输出:
-    <type 'exceptions.IndexError'>
-    <type 'exceptions.TypeError'>
-    Traceback (most recent call last):
-      ...
+'''
+输出:
+<type 'exceptions.IndexError'>
+<type 'exceptions.TypeError'>
+Traceback (most recent call last):
+  ...
+'''
+```
 
 
 ## 对象的序列化
@@ -374,33 +396,35 @@ Python对象的序列化操作是pickling进行的。pickling非常的重要，�
 
 下面举例来描述pickle的操作。从该例子中也可以看出,如果通过pickle.load 初始化一个对象, 并不会调用`__init__`方法。
 
-    # -*- coding: utf-8 -*-
-    from datetime import datetime
-    import pickle
+``` python
+# -*- coding: utf-8 -*-
+from datetime import datetime
+import pickle
 
-    class Distance(object):
+class Distance(object):
 
-        def __init__(self, meter):
-            print 'distance __init__'
-            self.meter = meter
+    def __init__(self, meter):
+        print 'distance __init__'
+        self.meter = meter
 
-    data = {
-        'foo': [1, 2, 3],
-        'bar': ('Hello', 'world!'),
-        'baz': True,
-        'dt': datetime(2016, 10, 01),
-        'distance': Distance(1.78),
-    }
-    print 'before dump:', data
-    with open('data.pkl', 'wb') as jar:
-        pickle.dump(data, jar)  # 将数据存储在文件中
+data = {
+    'foo': [1, 2, 3],
+    'bar': ('Hello', 'world!'),
+    'baz': True,
+    'dt': datetime(2016, 10, 01),
+    'distance': Distance(1.78),
+}
+print 'before dump:', data
+with open('data.pkl', 'wb') as jar:
+    pickle.dump(data, jar)  # 将数据存储在文件中
 
-    del data
-    print 'data is deleted!'
+del data
+print 'data is deleted!'
 
-    with open('data.pkl', 'rb') as jar:
-        data = pickle.load(jar)  # 从文件中恢复数据
-    print 'after load:', data
+with open('data.pkl', 'rb') as jar:
+    data = pickle.load(jar)  # 从文件中恢复数据
+print 'after load:', data
+```
 
 值得一提，从其他文件进行pickle.load操作时，需要注意有恶意代码的可能性。另外，Python的各个版本之间,pickle文件可能是互不兼容的。
 
@@ -436,51 +460,53 @@ pickling并不是Python的內建类型，它支持所有实现pickle协议(可�
 
 下面的代码示例很有意思，我们定义了一个类Slate(中文是板岩的意思)。这个类能够记录历史上每次写入给它的值,但每次`pickle.dump`时当前值就会被清空，仅保留了历史。
 
-    # -*- coding: utf-8 -*-
-    import pickle
-    import time
+``` python
+# -*- coding: utf-8 -*-
+import pickle
+import time
 
-    class Slate:
-        '''Class to store a string and a changelog, and forget its value when pickled.'''
-        def __init__(self, value):
-            self.value = value
-            self.last_change = time.time()
-            self.history = []
+class Slate:
+    '''Class to store a string and a changelog, and forget its value when pickled.'''
+    def __init__(self, value):
+        self.value = value
+        self.last_change = time.time()
+        self.history = []
 
-        def change(self, new_value):
-            # 修改value, 将上次的valeu记录在history
-            self.history.append((self.last_change, self.value))
-            self.value = new_value
-            self.last_change = time.time()
+    def change(self, new_value):
+        # 修改value, 将上次的valeu记录在history
+        self.history.append((self.last_change, self.value))
+        self.value = new_value
+        self.last_change = time.time()
 
-        def print_changes(self):
-            print 'Changelog for Slate object:'
-            for k, v in self.history:
-                print '%s    %s' % (k, v)
+    def print_changes(self):
+        print 'Changelog for Slate object:'
+        for k, v in self.history:
+            print '%s    %s' % (k, v)
 
-        def __getstate__(self):
-            # 故意不返回self.value和self.last_change,
-            # 以便每次unpickle时清空当前的状态，仅仅保留history
-            return self.history
+    def __getstate__(self):
+        # 故意不返回self.value和self.last_change,
+        # 以便每次unpickle时清空当前的状态，仅仅保留history
+        return self.history
 
-        def __setstate__(self, state):
-            self.history = state
-            self.value, self.last_change = None, None
+    def __setstate__(self, state):
+        self.history = state
+        self.value, self.last_change = None, None
 
-    slate = Slate(0)
-    time.sleep(0.5)
-    slate.change(100)
-    time.sleep(0.5)
-    slate.change(200)
-    slate.change(300)
-    slate.print_changes()  # 与下面的输出历史对比
-    with open('slate.pkl', 'wb') as jar:
-        pickle.dump(slate, jar)
-    del slate  # delete it
-    with open('slate.pkl', 'rb') as jar:
-        slate = pickle.load(jar)
-    print 'current value:', slate.value  # None
-    print slate.print_changes()  # 输出历史记录与上面一致
+slate = Slate(0)
+time.sleep(0.5)
+slate.change(100)
+time.sleep(0.5)
+slate.change(200)
+slate.change(300)
+slate.print_changes()  # 与下面的输出历史对比
+with open('slate.pkl', 'wb') as jar:
+    pickle.dump(slate, jar)
+del slate  # delete it
+with open('slate.pkl', 'rb') as jar:
+    slate = pickle.load(jar)
+print 'current value:', slate.value  # None
+print slate.print_changes()  # 输出历史记录与上面一致
+```
 
 
 ## 运算符相关的魔术方法
@@ -524,32 +550,34 @@ pickling并不是Python的內建类型，它支持所有实现pickle协议(可�
 
 下面的例子中也可以看出: 在编程语言中, 如果`a >=b and a <= b`, 并不能推导出`a == b`这样的结论。
 
-    # -*- coding: utf-8 -*-
-    class Word(str):
-        '''存储单词的类，定义比较单词的几种方法'''
-        def __new__(cls, word):
-            # 注意我们必须要用到__new__方法，因为str是不可变类型
-            # 所以我们必须在创建的时候将它初始化
-            if ' ' in word:
-                print "Value contains spaces. Truncating to first space."
-                word = word[:word.index(' ')]  # 单词是第一个空格之前的所有字符
-            return str.__new__(cls, word)
+``` python
+# -*- coding: utf-8 -*-
+class Word(str):
+    '''存储单词的类，定义比较单词的几种方法'''
+    def __new__(cls, word):
+        # 注意我们必须要用到__new__方法，因为str是不可变类型
+        # 所以我们必须在创建的时候将它初始化
+        if ' ' in word:
+            print "Value contains spaces. Truncating to first space."
+            word = word[:word.index(' ')]  # 单词是第一个空格之前的所有字符
+        return str.__new__(cls, word)
 
-        def __gt__(self, other):
-            return len(self) > len(other)
-        def __lt__(self, other):
-            return len(self) < len(other)
-        def __ge__(self, other):
-            return len(self) >= len(other)
-        def __le__(self, other):
-            return len(self) <= len(other)
+    def __gt__(self, other):
+        return len(self) > len(other)
+    def __lt__(self, other):
+        return len(self) < len(other)
+    def __ge__(self, other):
+        return len(self) >= len(other)
+    def __le__(self, other):
+        return len(self) <= len(other)
 
-    print 'foo < fool:', Word('foo') < Word('fool')  # True
-    print 'foolish > fool:', Word('foolish') > Word('fool')  # True
-    print 'bar >= foo:', Word('bar') >= Word('foo')  # True
-    print 'bar <= foo:', Word('bar') <= Word('foo')  # True
-    print 'bar == foo:', Word('bar') == Word('foo')  # False, 用了str内置的比较方法来进行比较
-    print 'bar != foo:', Word('bar') != Word('foo')  # True
+print 'foo < fool:', Word('foo') < Word('fool')  # True
+print 'foolish > fool:', Word('foolish') > Word('fool')  # True
+print 'bar >= foo:', Word('bar') >= Word('foo')  # True
+print 'bar <= foo:', Word('bar') <= Word('foo')  # True
+print 'bar == foo:', Word('bar') == Word('foo')  # False, 用了str内置的比较方法来进行比较
+print 'bar != foo:', Word('bar') != Word('foo')  # True
+```
 
 ### 一元运算符和函数
 
@@ -728,14 +756,16 @@ pickling并不是Python的內建类型，它支持所有实现pickle协议(可�
 
 在切片运算中将对象转化为int, 因此该方法的返回值必须是int。用一个例子来解释这个用法。
 
-    class Thing(object):
-        def __index__(self):
-            return 1
+``` python
+class Thing(object):
+    def __index__(self):
+        return 1
 
-    thing = Thing()
-    list_ = ['a', 'b', 'c']
-    print list_[thing]  # 'b'
-    print list_[thing:thing]  # []
+thing = Thing()
+list_ = ['a', 'b', 'c']
+print list_[thing]  # 'b'
+print list_[thing:thing]  # []
+```
 
 上面例子中, `list_[thing]`的表现跟`list_[1]`一致，正是因为Thing实现了`__index__`方法。
 
@@ -746,20 +776,24 @@ pickling并不是Python的內建类型，它支持所有实现pickle协议(可�
 
 下面我们再做个例子,如果对一个dict对象执行`dict_[thing]`会怎么样呢?
 
-    dict_ = {1: 'apple', 2: 'banana', 3: 'cat'}
-    print dict_[thing]  # raise KeyError
+``` python
+dict_ = {1: 'apple', 2: 'banana', 3: 'cat'}
+print dict_[thing]  # raise KeyError
+```
 
 这个时候就不是调用`__index__`了。虽然`list`和`dict`都实现了`__getitem__`方法, 但是它们的实现方式是不一样的。
 如果希望上面例子能够正常执行, 需要实现Thing的`__hash__` 和 `__eq__`方法.
 
-    class Thing(object):
-        def __hash__(self):
-            return 1
-        def __eq__(self, other):
-            return hash(self) == hash(other)
+``` python
+class Thing(object):
+    def __hash__(self):
+        return 1
+    def __eq__(self, other):
+        return hash(self) == hash(other)
 
-    dict_ = {1: 'apple', 2: 'banana', 3: 'cat'}
-    print dict_[thing]  # apple
+dict_ = {1: 'apple', 2: 'banana', 3: 'cat'}
+print dict_[thing]  # apple
+```
 
 `__coerce__(self, other)`
 
@@ -791,21 +825,23 @@ pickling并不是Python的內建类型，它支持所有实现pickle协议(可�
 当你对一个类只定义了`__str__`但没定义`__unicode__`时,`__unicode__`会根据`__str__`的返回值自动实现,即`return unicode(self.__str__())`;
 但返回来则不成立。
 
-    class StrDemo2:
-        def __str__(self):
-            return 'StrDemo2'
+``` python
+class StrDemo2:
+    def __str__(self):
+        return 'StrDemo2'
 
-    class StrDemo3:
-        def __unicode__(self):
-            return u'StrDemo3'
+class StrDemo3:
+    def __unicode__(self):
+        return u'StrDemo3'
 
-    demo2 = StrDemo2()
-    print str(demo2)  # StrDemo2
-    print unicode(demo2)  # StrDemo2
+demo2 = StrDemo2()
+print str(demo2)  # StrDemo2
+print unicode(demo2)  # StrDemo2
 
-    demo3 = StrDemo3()
-    print str(demo3)  # <__main__.StrDemo3 instance>
-    print unicode(demo3)  # StrDemo3
+demo3 = StrDemo3()
+print str(demo3)  # <__main__.StrDemo3 instance>
+print unicode(demo3)  # StrDemo3
+```
 
 `__format__(self, formatstr)`
 
@@ -851,18 +887,20 @@ pickling并不是Python的內建类型，它支持所有实现pickle协议(可�
 
 该方法允许类的实例跟函数一样表现:
 
-    class XClass:
-        def __call__(self, a, b):
-            return a + b
-
-    def add(a, b):
+``` python
+class XClass:
+    def __call__(self, a, b):
         return a + b
 
-    x = XClass()
-    print 'x(1, 2)', x(1, 2)
-    print 'callable(x)', callable(x)  # True
-    print 'add(1, 2)', add(1, 2)
-    print 'callable(add)', callable(add)  # True
+def add(a, b):
+    return a + b
+
+x = XClass()
+print 'x(1, 2)', x(1, 2)
+print 'callable(x)', callable(x)  # True
+print 'add(1, 2)', add(1, 2)
+print 'callable(add)', callable(add)  # True
+```
 
 
 ## Python3中的差异
