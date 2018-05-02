@@ -3,7 +3,7 @@
         <li class="inline-li">
             <time><%- page.date.format(config.date_format) %></time>
         </li>
-        <% if(page.categories.length) { %>
+        <% if((page.categories || []).length) { %>
         <li class="inline-li">
             <span class="post-span">·</span>
         </li>

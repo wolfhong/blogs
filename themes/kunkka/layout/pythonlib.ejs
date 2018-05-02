@@ -8,7 +8,7 @@ layout: base
             <nav class="breadcrumb-navigation">
                 <a rel="bookmark" href="<%- config.root %>"><%= __('home') %></a>
                 <span class="breadcrumb-arrow fa fa-angle-right"></span>
-                <%- partial('_post/categories', {page: page}) %>
+                <a href="/pythonlib/" title="pythonlib" rel="category tag">pythonlib</a>
                 <span class="breadcrumb-arrow fa fa-angle-right"></span>
                 <%= page.title %>
             </nav>
@@ -26,9 +26,8 @@ layout: base
                     <% page.tags.forEach(function(tag){ %>
                     <a href="<%- url_for(tag.path) %>" title="<%= tag.name %>" rel="tag" class="fa fa-tag"><%= tag.name %></a>
                     <% }); %>
-                <% } else { %>
-                    <%= __('no_tags') %>
                 <% } %>
+
                 </nav>
                 <!-- END wolfhong -->
 
@@ -46,9 +45,7 @@ layout: base
                     <% page.tags.forEach(function(tag){ %>
                     <a href="<%- url_for(tag.path) %>" title="<%= tag.name %>" rel="tag" class="fa fa-tag"><%= tag.name %></a>
                     <% }); %>
-                <% } else { %>
-                    <%= __('no_tags') %>
-                <% } %>
+                <% }  %>
                 </nav>
             </article>
         </div><!-- div#primary -->

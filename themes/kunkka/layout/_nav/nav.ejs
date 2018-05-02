@@ -15,7 +15,7 @@
             </div>
             <% theme.nav.forEach(function(item) { %>
             <div class="gnli<% if(is_current(item.url)) { %> current<% } %>">
-                <a class="gna fa <%- item.icon %>" href="<%- url_for(item.url) %>" title="<%= item.description || '' %>">
+                <a class="gna fa <%- item.icon %>" href="<%- url_for(item.url) %>" title="<%= item.description || '' %>" target="<%= item.target || '_self' %>">
                     <span class="gn-item"><%= item.title %></span>
                 </a>
             </div>

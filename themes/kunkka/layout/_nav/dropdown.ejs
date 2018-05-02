@@ -1,6 +1,6 @@
 <table id="dropdown-menu">
     <tbody>
-        <% if (site.categories.length) { %>
+        <% if ((site.categories || []).length) { %>
         <tr class="trline">
             <td class="tdleft"><%= __('categories') %></td>
             <td class="tdright tab-ul tab-categories">

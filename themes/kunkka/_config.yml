@@ -11,10 +11,16 @@ nav:
     url: archives/
     icon: fa-archive
     description:
+  - title: python库
+    url: pythonlib/
+    icon: fa-flag
+    description:
+    target: _self
   - title: 关于
     url: about/
     icon: fa-user
     description:
+
 
 # notice:
 #   - "**Notice** one"

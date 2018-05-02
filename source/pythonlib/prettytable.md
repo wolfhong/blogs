@@ -1,12 +1,8 @@
 ---
-title: PY每日一库哟：prettytable/PTable
+layout: pythonlib
+title: prettytable/PTable：绘制表格
 toc: true
 date: 2018-04-27 21:23:00
-categories:
-  - pylib
-tags:
- - python
- - pylib
 ---
 
 ### 简介
@@ -14,27 +10,27 @@ tags:
 prettytable/PTable是一个可以在终端快速绘制出漂亮表格的python库。也支持html格式的表格绘制。
 
 原项目prettytable托管于[Google Code][google-code]，PTable是其在[GitHub][github]的一个fork，完全兼容prettytable。
-完整的文档可参考[readthedocs][readthedocs]，这里只做Python库的简单介绍。
+完整的文档可参考[ReadTheDocs][readthedocs]，这里只做Python库的简单介绍。
 
 最常用的示例:
 
 ``` python
-from prettytable import PrettyTable
-x = PrettyTable([u"城市名", u"面积", u"人口", u"年降雨量"])
-x.add_row(["Adelaide", 1295, 1158259, 600.5])
-x.add_row(["Brisbane", 5905, 1857594, 1146.4])
-x.add_row(["Darwin", 112, 120900, 1714.7])
-x.add_row(["Hobart", 1357, 205556, 619.5])
-x.add_row(["Sydney", 2058, 4336374, 1214.8])
-x.add_row(["Melbourne", 1566, 3806092, 646.9])
-x.add_row(["Perth", 5386, 1554769, 869.4])
-print(x)
+    from prettytable import PrettyTable
+    x = PrettyTable([u"城市名", u"面积", u"人口", u"年降雨量"])
+    x.add_row(["Adelaide", 1295, 1158259, 600.5])
+    x.add_row(["Brisbane", 5905, 1857594, 1146.4])
+    x.add_row(["Darwin", 112, 120900, 1714.7])
+    x.add_row(["Hobart", 1357, 205556, 619.5])
+    x.add_row(["Sydney", 2058, 4336374, 1214.8])
+    x.add_row(["Melbourne", 1566, 3806092, 646.9])
+    x.add_row(["Perth", 5386, 1554769, 869.4])
+    print(x)
 ```
 
-输出:
+输出(有些浏览器上查看时，可能稍微有些排版错位):
 
     +-----------+------+---------+----------+
-    |   城市名  | 面积 |   人口  | 年降雨量 |
+    |   城市名   | 面积  |   人口   | 年降雨量  |
     +-----------+------+---------+----------+
     |  Adelaide | 1295 | 1158259 |  600.5   |
     |  Brisbane | 5905 | 1857594 |  1146.4  |
@@ -132,10 +128,10 @@ print(x)
     print(x.get_string(sortby=u"人口", reversesort=True))
 ```
 
-输出:
+输出(有些浏览器上查看时，可能稍微有些排版错位):
 
     +-----------+------+---------+----------+
-    |   城市名  | 面积 |   人口  | 年降雨量 |
+    |   城市名   | 面积  |   人口   | 年降雨量  |
     +-----------+------+---------+----------+
     |   Sydney  | 2058 | 4336374 |  1214.8  |
     | Melbourne | 1566 | 3806092 |  646.9   |
@@ -158,13 +154,17 @@ print(x)
     print(x.get_html_string(attributes={"class":"red_table", "border": "1"}))
 ```
 
-#### More
+### More
 
 文档与更多示例参考:
-* [readthedocs][readthedocs]
+* [ReadTheDocs][readthedocs]
+* [Python Code Example][python-code-example]
 * [Pypi][pypi]
+* [Google Code][google-code]
+* [GitHub][github]
 
 [google-code]: https://code.google.com/archive/p/prettytable/
 [github]: https://github.com/kxxoling/PTable
 [readthedocs]: http://ptable.readthedocs.io/en/latest/
 [pypi]: https://pypi.org/project/PTable/
+[python-code-example]: https://www.programcreek.com/python/example/58616/prettytable.PrettyTable
