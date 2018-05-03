@@ -11,7 +11,7 @@ nav:
     url: archives/
     icon: fa-archive
     description:
-  - title: python库
+  - title: PythonLib
     url: pythonlib/
     icon: fa-flag
     description:
