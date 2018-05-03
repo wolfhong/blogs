@@ -17,3 +17,4 @@ date: 2018-05-02 22:53:17
 * [psutil：系统监测与进程管理](./psutil.html)
 * [livereload：文件改动监视与web开发利器](./livereload.html)
 * [selenium：操作浏览器冲浪](./selenium.html)
+* [virtualenvwrapper/virtualenv：隔离的虚拟环境](./virtualenvwrapper.html)
