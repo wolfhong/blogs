@@ -2,12 +2,12 @@
 layout: pythonlib
 title: livereload：文件改动监视与web开发利器
 toc: true
-date: 2018-05-01 21:23:00
+date: 2018-02-02 00:00:00
 ---
 
 ### 简介
 
-[LiveReload][github]会监视指定目录下的文件变更，只要文件有变更保存，LiveReload就会执行指定的命令（比如是`make`，`build`相关的操作）。同时，LiveReload包含了一个静态服务器，默认访问 **http://localhost:5500** 即可查看。
+[LiveReload][github]会监视指定目录下的文件变更，只要文件有变更保存，LiveReload就会执行指定的命令（比如是`make`，`build`之类的操作）。同时，LiveReload包含了一个静态服务器，默认访问 **http://localhost:5500** 即可查看。
 
 完整的文档可参考[ReadTheDocs][readthedocs]，这里只做Python库的简单介绍。
 
@@ -81,9 +81,11 @@ Python-LiveReload是为web开发者设计的，支持接入wsgi application.
 
 ``server.watch`` 可以监视具体的文件路径，或者目录，或者glob pattern:
 
+``` python
     server.watch('path/to/file.txt')
     server.watch('directory/path/')
     server.watch('glob/*.pattern')
+```
 
 你也可以使用其他的库（比如`formic`） 来提供更强大的功能:
 
@@ -94,14 +96,17 @@ Python-LiveReload是为web开发者设计的，支持接入wsgi application.
 
 ``server.watch``还支持一个`delay`参数，单位为秒，表示文件变更后延迟多久才发送reload信号:
 
+``` python
     # delay 2 seconds for reloading
     server.watch('path/to/file', delay=2)
+```
 
 
 #### server.serve
 
 ``server.serve`` 用于启动服务器，下面是该方法的调用示例:
 
+``` python
     # use default settings
     server.serve()
 
@@ -113,12 +118,14 @@ Python-LiveReload是为web开发者设计的，支持接入wsgi application.
 
     # open the web browser on startup, based on $BROWSER environment variable
     server.serve(open_url=True, debug=False)
+```
 
 
 #### shell
 
 使用``shel``函数，可以帮你执行一些shell命令，配合``server.watch``一起使用:
 
+``` python
     # you can redirect command output to a file
     server.watch('style.less', shell('lessc style.less', output='style.css'))
 
@@ -127,6 +134,7 @@ Python-LiveReload是为web开发者设计的，支持接入wsgi application.
 
     # working with Makefile
     server.watch('assets/*.styl', shell('make assets', cwd='assets'))
+```
 
 
 #### 框架集成
@@ -173,7 +181,7 @@ Python-LiveReload支持与其他的web框架无缝对接，如Django、Flask、B
 #### 商业的LiveReload
 
 这是一家公司的商业化产品，并且进行了开源，与本文介绍的Python-LiveReload并无关系。
-可以在其[官网](http://livereload.com/)上下载到。它提供了更加方便的功能，有兴趣可以了解下。
+可以在其[官网](http://livereload.com/)上下载到。它提供了更加便捷的功能，有兴趣可以了解下。
 
 ![image](http://static2.extremevision.com.cn/blogimage/livereload.png)
 

@@ -2,7 +2,7 @@
 layout: pythonlib
 title: prettytable/PTable：绘制表格
 toc: true
-date: 2018-04-27 21:23:00
+date: 2018-01-31 00:00:00
 ---
 
 ### 简介
@@ -165,6 +165,6 @@ prettytable/PTable是一个可以在终端快速绘制出漂亮表格的python�
 
 [google-code]: https://code.google.com/archive/p/prettytable/
 [github]: https://github.com/kxxoling/PTable
-[readthedocs]: http://ptable.readthedocs.io/en/latest/
+[readthedocs]: https://ptable.readthedocs.io/en/latest/
 [pypi]: https://pypi.org/project/PTable/
 [python-code-example]: https://www.programcreek.com/python/example/58616/prettytable.PrettyTable

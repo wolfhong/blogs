@@ -2,7 +2,7 @@
 layout: pythonlib
 title: psutil：系统监测与进程管理
 toc: true
-date: 2018-04-27 21:23:00
+date: 2018-02-01 00:00:00
 ---
 
 ### 简介
@@ -247,5 +247,5 @@ p.nice(10)  # set进程优先级
 
 
 [github]: https://github.com/giampaolo/psutil
-[readthedocs]: http://psutil.readthedocs.io/en/latest/
-[examples]: http://psutil.readthedocs.io/en/latest/#recipes
+[readthedocs]: https://psutil.readthedocs.io/en/latest/
+[examples]: https://psutil.readthedocs.io/en/latest/#recipes

@@ -1,12 +1,12 @@
 ---
-title: PY每日一库哟
+title: Python每日一库哟
 categories:
   - 其他
 date: 2018-05-02 22:53:17
 ---
 
 <br>
-本专题"PY每日一库哟"，每天介绍一个好用的Python库，包括内置的和第三方的。
+本专题"Python每日一库哟"，每天介绍一个好用的Python库，包括内置的和第三方的。
 本专题适合那些有一定Python基础的人，可通过该专题，涉猎更多Python能做的事。
 希望你在无聊之余阅读后，能在以后的工作中，遇到相关问题后会突然蹦出解决问题的灵感。
 
@@ -15,3 +15,5 @@ date: 2018-05-02 22:53:17
 
 * [prettytable/PTable：绘制表格](./prettytable.html)
 * [psutil：系统监测与进程管理](./psutil.html)
+* [livereload：文件改动监视与web开发利器](./livereload.html)
+* [selenium：操作浏览器冲浪](./selenium.html)
