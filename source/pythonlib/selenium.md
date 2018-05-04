@@ -108,7 +108,7 @@ Selenium测试也可以用各种编程语言编写，这些测试通过调用Sel
 * [GitHub][github]
 * [ReadTheDocs英文文档][readthedocs]
 * [ReadTheDocs中文文档][readthedocs-zh](质量取决于翻译者)
-* [官方文档][official-docs]
+* [Official Docs][official-docs]
 
 ### 其他扩展
 
