@@ -1,12 +1,12 @@
 <ul id="pager">
 <% if (page.prev){ %>
     <li class="previous">
-        <a href="<%- url_for(page.prev.path) %>" title="<%= page.prev.title %>" class="tooltipped tooltipped-n" aria-label="<%= page.prev.title %>"><span class="fa fa-chevron-left"></span> <%= page.prev.title %></a>
+        <a href="<%- url_for(page.prev.path) %>" title="<%= page.prev.title %>" class="tooltipped tooltipped-n" aria-label="<%= page.prev.title %>"><span class="fa fa-chevron-left"></span> <%= __('prev_post') %></a>
     </li>
     <% } %>
     <% if (page.next){ %>
     <li class="next">
-        <a href="<%- url_for(page.next.path) %>" title="<%= page.next.title %>" class="tooltipped tooltipped-n" aria-label="<%= page.next.title %>"><%= page.next.title %> <span class="fa fa-chevron-right"></span></a>
+        <a href="<%- url_for(page.next.path) %>" title="<%= page.next.title %>" class="tooltipped tooltipped-n" aria-label="<%= page.next.title %>"><%=  __('next_post') %> <span class="fa fa-chevron-right"></span></a>
     </li>
     <% } %>
 </ul>
