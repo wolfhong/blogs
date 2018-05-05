@@ -1,3 +1,5 @@
+.PHONY: server deploy
+
 server:
 	hexo clean && hexo g && hexo server --draft
 deploy:

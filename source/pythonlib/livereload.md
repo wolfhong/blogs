@@ -1,6 +1,6 @@
 ---
 layout: pythonlib
-title: livereload：文件改动监视与web开发利器
+title: livereload：监视文件改动与web开发利器
 toc: true
 date: 2018-02-02 00:00:00
 ---
