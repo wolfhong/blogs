@@ -146,9 +146,14 @@ yapf使用clang-format算法来实现代码的重新排版，即便代码本来�
 
 安装后，你可以试着使用`yapf <filename>`来格式化前面例子中的丑陋代码。或者直接在[online demo][yapf-online]中体验一番吧。
 
+#### docformatter
+
+[docformatter][docformatter]，正如其名，格式化Python文档的，用法很类似。挺小众的功能，稍微提一下就行了。
+
 
 [pycodestyle]: ./pycodestyle.html
 [pep8]: https://www.python.org/dev/peps/pep-0008/
 [github]: https://github.com/hhatto/autopep8
 [yapf]: https://github.com/google/yapf
 [yapf-online]: https://yapf.now.sh/
+[docformatter]: https://github.com/myint/docformatter

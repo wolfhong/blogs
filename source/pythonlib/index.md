@@ -22,6 +22,7 @@ date: 2018-05-02 22:53:17
 | [livereload](./livereload.html)          | 监视文件改动与web开发利器 |  |
 | [selenium](./selenium.html)              | 操作浏览器冲浪与web测试 |  |
 | [virtualenvwrapper/virtualenv](./virtualenvwrapper.html)  |  隔离的虚拟环境  |  |
-| [requests](http://docs.python-requests.org/zh_CN/latest/user/quickstart.html)   |  最好用的网络库  |  来自网络  |
+| [requests](http://docs.python-requests.org/zh_CN/latest/user/quickstart.html)   |  最好用的HTTP库  |  来自网络  |
 | [pycodestyle/pep8](./pycodestyle.html)   | Python代码风格检查器    |  同类: flake8, pylint, pylama  |
 | [autopep8/yapf](./autopep8.html)              | Python代码的格式化工具  |  同类: yapf, pep8ify   |
+| [tablib](./tablib.html)                  | 导出表格数据，支持excel,yaml,json,pandas等 |  |

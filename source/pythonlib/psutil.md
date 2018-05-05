@@ -245,7 +245,14 @@ p.nice(10)  # set进程优先级
 * [更多示例][examples]
 * [GitHub][github]
 
+### 其他扩展
+
+[Diamond][diamond]是一个python写的守护程序，它可以收集系统指标（cpu, 内存, 网络，I/O, 负载, 硬盘指标）, 并把它们发送至Graphite或其它后端。此外，通过它可以实现自定义的收集器，采集你想要的任何资源指标。
+考虑到现在有[Prometheus][prometheus]等更加大众的解决方案，这里就稍微提及而已。
+
 
 [github]: https://github.com/giampaolo/psutil
 [readthedocs]: https://psutil.readthedocs.io/en/latest/
 [examples]: https://psutil.readthedocs.io/en/latest/#recipes
+[diamond]: https://github.com/python-diamond/Diamond
+[prometheus]: https://prometheus.io/
