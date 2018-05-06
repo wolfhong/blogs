@@ -1,5 +1,5 @@
 ---
-title: 列举Content-Type
+title: Content-Type参考手册
 date: 2018-02-24 20:52:37
 categories:
   - 其他
@@ -13,7 +13,7 @@ web开发者对于响应头(Response Headers)中Content-Type肯定不会陌生�
 
 所有的MIME Type，也即所有的Content-Type可能情况，可以通过[一个官方的媒体类型清单][official]查看到。 该清单由IANA维护着，它是制定MIME Type的权威机构。
 
-下面会根据资源的媒体类型，给出一个比较常见的MIME Type列表。其中有两个最主要的类型:
+下面会根据资源的媒体类型，给出一个比较常见的MIME Type对照表。其中有两个最主要的类型:
 - text/plain 是文本文件的默认值。文本文件应当是人类可读的，不包含二进制数据。
 - application/octet-stream 是所有非文本的默认值。有未知的文件类型时就可以使用此类型。浏览器在处理该类型文件时会特别小心。
 
