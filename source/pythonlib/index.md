@@ -26,3 +26,4 @@ date: 2018-05-02 22:53:17
 | [pycodestyle/pep8](./pycodestyle.html)   | Python代码风格检查器    |  同类: flake8, pylint, pylama  |
 | [autopep8/yapf](./autopep8.html)              | Python代码的格式化工具  |  同类: yapf, pep8ify   |
 | [tablib](./tablib.html)                  | 导出表格数据，支持excel,yaml,json,pandas等 |  |
+| [formic](./formic.html)                  | 快速查找文件                               |  |
