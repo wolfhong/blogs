@@ -14,6 +14,6 @@ date: 2018-05-02 22:53:17
 * [mkdocs](http://www.mkdocs.org/):
   markdown文档生成器，可搭建静态网站，但现在主流是sphinx，没必要使用冷门的东西。
 * [pycco](https://pycco-docs.github.io/pycco/):
-  文学编程风格的文档生成器，它将代码生成为一个并排显示的文档网站:一边是注释与文档，一边是源代码。
+  [文学编程](http://www.literateprogramming.com/)风格的文档生成器，它将代码生成为一个并排显示的文档网站:一边是注释与文档，一边是源代码。
 * [ronn](https://github.com/rtomayko/ronn):
   roff的反过程，可用于构建Unix手册(即ManPages)，将人类可读的文本文件转换为终端显示的roff文件。
