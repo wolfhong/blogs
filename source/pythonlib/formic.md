@@ -73,6 +73,11 @@ for filepath in fileset:
 * [PYPI][pypi]
 * [官方文档][official-doc]
 
+#### 其他扩展
+
+Python标准库中的[glob][glob]和[fnmatch][fnmatch]提供了类似的功能，可以了解下。
+个人觉得，formic在使用上更加便捷，尤其是当查找条件有多个的时候。
+
 
 [bitbucket]: https://bitbucket.org/aviser/formic
 [pypi]: https://pypi.org/project/formic/
@@ -80,3 +85,5 @@ for filepath in fileset:
 [fileset-globs]: http://ant.apache.org/manual/dirtasks.html#patterns
 [official-doc]: http://www.aviser.asia/formic/doc/index.html
 [api-doc]: http://www.aviser.asia/formic/doc/api.html
+[glob]: https://docs.python.org/3/library/glob.html
+[fnmatch]: https://docs.python.org/3/library/fnmatch.html

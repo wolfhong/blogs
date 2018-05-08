@@ -28,7 +28,7 @@ date: 2018-02-03 00:00:00
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
     export WORKON_HOME=$HOME/.virtualenvs
     # export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/bin/virtualenvwrapper.sh
 
 常见的命令:
 
