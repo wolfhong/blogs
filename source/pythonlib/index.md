@@ -28,3 +28,4 @@ date: 2018-05-02 22:53:17
 | [tablib](./tablib.html)                  | 导出表格数据，支持excel,yaml,json,pandas等 |  |
 | [formic](./formic.html)                  | 快速查找文件   | 类比: glob, fnmatch |
 | [anaconda](./anaconda.html)          | 数据科学领域的开发工具 | 类比: pip, virtualenv  |
+| [python-magic](./python-magic.html)  | 文件类型识别           |  |
