@@ -22,10 +22,15 @@ date: 2018-05-02 22:53:17
 | [livereload](./livereload.html)          | 监视文件改动与web开发利器 |  |
 | [selenium](./selenium.html)              | 操作浏览器冲浪与web测试 |  |
 | [virtualenvwrapper/virtualenv](./virtualenvwrapper.html)  |  隔离的虚拟环境  |  |
-| [requests](http://docs.python-requests.org/zh_CN/latest/user/quickstart.html)   |  最好用的HTTP库  |  来自网络  |
+| [requests][requests]   |  最好用的HTTP库  |  来自网络  |
 | [pycodestyle/pep8](./pycodestyle.html)   | Python代码风格检查器    |  类比: flake8, pylint, pylama  |
 | [autopep8/yapf](./autopep8.html)              | Python代码的格式化工具  |  类比: yapf, pep8ify   |
 | [tablib](./tablib.html)                  | 导出表格数据，支持excel,yaml,json,pandas等 |  |
 | [formic](./formic.html)                  | 快速查找文件   | 类比: glob, fnmatch |
 | [anaconda](./anaconda.html)          | 数据科学领域的开发工具 | 类比: pip, virtualenv  |
-| [python-magic](./python-magic.html)  | 文件类型识别           |  |
+| [python-magic](./python-magic.html)  | 文件类型识别           | 类比: imghdr |
+| [watchdog](./watchdog.html)          | 监视文件/目录变化      | 类比: livereload |
+| [arrow][arrow]   | 节省脑力的时间库  | 来自文档示例 |
+
+[requests]: http://docs.python-requests.org/zh_CN/latest/user/quickstart.html
+[arrow]: http://arrow.readthedocs.io/en/latest/#user-s-guide
