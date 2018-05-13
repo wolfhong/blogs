@@ -33,6 +33,7 @@ date: 2018-05-02 22:53:17
 | [arrow][arrow]   | 节省脑力的时间库  | 来自文档示例 |
 | [dateutil](./dateutil.html)      | datetime模块的扩展  | 补充arrow没有的功能 |
 | [chardet][chardet]       | 检测字符编码        | 来自网络 |
+| [ftfy](./ftfy.html)      | Unicode的转化(如恢复乱码，全角符转半角符等)    |  |
 
 [requests]: http://docs.python-requests.org/zh_CN/latest/user/quickstart.html
 [arrow]: http://arrow.readthedocs.io/en/latest/#user-s-guide
