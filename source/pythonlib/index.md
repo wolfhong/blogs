@@ -31,6 +31,9 @@ date: 2018-05-02 22:53:17
 | [python-magic](./python-magic.html)  | 文件类型识别           | 类比: imghdr |
 | [watchdog](./watchdog.html)          | 监视文件/目录变化      | 类比: livereload |
 | [arrow][arrow]   | 节省脑力的时间库  | 来自文档示例 |
+| [dateutil](./dateutil.html)      | datetime模块的扩展  | 补充arrow没有的功能 |
+| [chardet][chardet]       | 检测字符编码        | 来自网络 |
 
 [requests]: http://docs.python-requests.org/zh_CN/latest/user/quickstart.html
 [arrow]: http://arrow.readthedocs.io/en/latest/#user-s-guide
+[chardet]: https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001510905171877ca6fdf08614e446e835ea5d9bce75cf5000
