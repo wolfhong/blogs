@@ -1,14 +1,14 @@
 ---
 layout: pythonlib
-title: ftfy：转化不好看的Unicode字符
+title: ftfy：转化不好的Unicode字符
 toc: true
 date: 2018-03-02 00:00:00
 ---
 
 ### 简介
 
-[ftfy][github]的目标是将不好看的Unicode字符转为好看的Unicode字符。
-所谓的不好看的Unicode字符的产生，可能有多种原因:
+[ftfy][github]的目标是将不好的Unicode字符转为好的Unicode字符。
+所谓的不好的Unicode字符的产生，可能有多种原因:
 
 * 比如，用一种标准编码Unicode后错误的使用另一种标准对其进行解码， 会产生无意义的字符，也即常说的"变为乱码"(mojibake)。 这可以使用`ftfy.fix_encoding()` 进行修复。
 * 又比如，用户错误输入，使用了[全角符号][wiki]"ＱＱ１２３４５６" 代替了半角符号"QQ123456"，"Ｎａｍｅ"代替了"Name"。这可以使用`ftfy.fix_text()` 进行修复。
