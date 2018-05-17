@@ -35,11 +35,23 @@ date: 2018-05-02 22:53:17
 | [chardet][chardet]       | 检测字符编码        | 来自网络 |
 | [ftfy](./ftfy.html)      | Unicode的转化(如恢复乱码，全角符转半角符等)    |  |
 | [python-phonenumbers](phonenumbers)  |  解析，格式化，验证多国家电话号码<br>可获取所在地，代理商，时区等信息  | 来自网络 |
-| [opencc-python](./opencc-python.html)       |  简体繁体的相互转换      | 类比: [zhtools][zhtools] |
+| [opencc-python](./opencc-python.html)       |  简体繁体的相互转换      | |
 
 [requests]: http://docs.python-requests.org/zh_CN/latest/user/quickstart.html
 [arrow]: http://arrow.readthedocs.io/en/latest/#user-s-guide
 [chardet]: https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001510905171877ca6fdf08614e446e835ea5d9bce75cf5000
 [phonenumbers]: https://zhuanlan.zhihu.com/p/24852734
 [opencc-python]: https://pypi.org/project/opencc-python/
-[zhtools]: https://github.com/csdz/nstools.git
+[openpyxl]: https://openpyxl.readthedocs.io/en/latest/
+
+
+* [xlwt, xlrd, xlutils](https://github.com/python-excel/):
+  xlwt(只写)和xlrd(只读)和xlutils(封装前两者)在使用上过时了，只支持到了Excel 2003。
+* [marmir](https://github.com/brianray/mm):
+  封装了xlwt，可以创建Google Docs，支持Django 的queryset
+  缺陷非常大，长时间没有更新，windows下打不开excel文件，只支持py2
+
+[xlwt]: https://github.com/python-excel/xlwt
+[xlrd]: https://github.com/python-excel/xlrd
+[xlutils]: https://github.com/python-excel/xlutils
+[openpyxl]: https://openpyxl.readthedocs.io/en/latest/

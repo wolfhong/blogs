@@ -42,3 +42,11 @@ True
 * [pyfiglet](https://github.com/pwaller/pyfiglet):
   [所有字体的展示效果](https://gist.github.com/wolfhong/2bf308ba727cfbc92f8edaee30cb9eef)
   [所有字体文件](https://github.com/pwaller/pyfiglet/tree/master/pyfiglet/fonts)
+* [PLY](http://www.dabeaz.com/ply/):
+  lex(词法分析) 和 yacc(语法分析) 解析工具的Python实现。官网上链接了其他Python实现的语法工具。
+* [pyparsing](http://pyparsing.wikispaces.com/):
+  可以生成通用的语法解析器的框架。
+* [Pygments](http://pygments.org/):
+  基于html的通用语法高亮工具，支持很多种语言。
+* [python-user-agents](https://github.com/selwin/python-user-agents):
+  浏览器UserAgent解析器，可判断pc/tablet/mobile/robot，是否可触屏。

@@ -7,7 +7,7 @@ date: 2018-02-03 00:00:00
 
 ### 简介
 
-Selenium的用处非常广泛，诸如网络监测、网页拨测、网页截屏、无需浏览器的Web测试、页面访问自动化等都可以实现。 简单概括就是，你在浏览器上能做的事情，它几乎都可以完成。它可以模拟你来操作网页。
+Selenium的用处非常广泛，诸如网络监测、网页拨测、网页截屏、无需浏览器的Web测试、页面访问自动化等都可以实现。 简单概括就是，你在浏览器上能做的事情，它几乎都可以完成。它可以模拟你来操作网页，包括鼠标、键盘、触摸等事件，也支持执行JS脚本。
 
 Selenium官方将自己定位为“浏览器自动化框架和生态系统”。
 
@@ -124,6 +124,10 @@ Katalon Studio公司推出了自己的Selenium IDE，作为Chrome浏览器的插
 Katalon Studio将其定位为最好用的Selenium IDE，实现了录制、播放、debug、快速导出到Selenium WebDriver脚本等功能。
 个人觉得，**Katalon Recorder**的确比官方的**Selenium IDE**好用，有兴趣可以试试。
 
+#### marionette-client
+
+[marionette-client][marionette-client]允许您远程控制基于Gecko的浏览器或运行Marionette服务器的设备。  这包括Firefox桌面和Android版Firefox。
+
 
 [wiki]: https://en.wikipedia.org/wiki/Selenium_(software)
 [github]: https://github.com/SeleniumHQ/selenium
@@ -134,6 +138,7 @@ Katalon Studio将其定位为最好用的Selenium IDE，实现了录制、播放
 [seleniumhq]: https://www.seleniumhq.org/download/
 [phantonjs]: http://phantomjs.org/quick-start.html
 [katalon]: https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid
+[marionette-client]: http://marionette-client.readthedocs.io/en/master/
 
 [mygit]: https://github.com/wolfhong/pisces
 [katalon-mygist]: https://gist.github.com/wolfhong/3a861560b56a251b3d7d4beda2faeaf6
