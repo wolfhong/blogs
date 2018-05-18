@@ -15,43 +15,60 @@ date: 2018-05-02 22:53:17
 
 专题中，默认你是在Linux或者Mac下编程，如果你使用Windows编程，安装时如果遇到问题，一般可参考文章中的GitHub或者ReadTheDocs链接，会得到解答。
 
-|  Python库+工具  |  大白话作用 |     备注     |
-|:----------------|:------------|:-------------|
-| [prettytable/PTable](./prettytable.html) | 绘制表格 |  |
-| [psutil](./psutil.html)                  | 系统监测与进程管理   |  |
-| [livereload](./livereload.html)          | 监视文件改动与web开发利器 |  |
-| [selenium](./selenium.html)              | 操作浏览器冲浪与web测试 |  |
-| [virtualenvwrapper/virtualenv](./virtualenvwrapper.html)  |  隔离的虚拟环境  |  |
-| [requests][requests]   |  最好用的HTTP库  |  来自网络  |
-| [pycodestyle/pep8](./pycodestyle.html)   | Python代码风格检查器    |  类比: flake8, pylint, pylama  |
-| [autopep8/yapf](./autopep8.html)              | Python代码的格式化工具  |  类比: yapf, pep8ify   |
-| [tablib](./tablib.html)                  | 导出表格数据，支持excel,yaml,json,pandas等 |  |
-| [formic](./formic.html)                  | 快速查找文件   | 类比: glob, fnmatch |
-| [anaconda](./anaconda.html)          | 数据科学领域的开发工具 | 类比: pip, virtualenv  |
-| [python-magic](./python-magic.html)  | 文件类型识别           | 类比: imghdr |
-| [watchdog](./watchdog.html)          | 监视文件/目录变化      | 类比: livereload |
-| [arrow][arrow]   | 节省脑力的时间库  | 来自文档示例 |
-| [dateutil](./dateutil.html)      | datetime模块的扩展  | 补充arrow没有的功能 |
-| [chardet][chardet]       | 检测字符编码        | 来自网络 |
-| [ftfy](./ftfy.html)      | Unicode的转化(如恢复乱码，全角符转半角符等)    |  |
-| [python-phonenumbers](phonenumbers)  |  解析，格式化，验证多国家电话号码<br>可获取所在地，代理商，时区等信息  | 来自网络 |
-| [opencc-python](./opencc-python.html)       |  简体繁体的相互转换      | |
+* [prettytable/PTable](./prettytable.html): 在终端绘制表格
+* [psutil](./psutil.html): 系统监测与进程管理
+* [livereload](./livereload.html): 监视文件改动与web开发利器
+* [selenium](./selenium.html): 操作浏览器冲浪与web自动化测试
+* [virtualenvwrapper/virtualenv](./virtualenvwrapper.html): 隔离的虚拟环境
+* [requests][requests]: 最好用的HTTP库
+* [pycodestyle/pep8](./pycodestyle.html): Python代码风格检查器, 类比: flake8, pylint, pylama
+* [autopep8/yapf](./autopep8.html): Python代码的格式化工具, 类比: yapf, pep8ify
+* [tablib](./tablib.html): 导出表格数据, 支持excel, yaml, json, pandas等
+* [formic](./formic.html): 快速查找文件, 类比: glob, fnmatch
+* [anaconda](./anaconda.html): 数据科学领域的开发工具, 类比: pip, virtualenv
+* [python-magic](./python-magic.html): 文件类型识别, 类比: imghdr
+* [watchdog](./watchdog.html): 监视文件/目录变化, 类比: livereload
+* [arrow][arrow]: 节省脑力的时间库，其他第三方时间操作类库都可以不用再看了
+* [dateutil](./dateutil.html): datetime模块的扩展, 补充arrow没有的功能
+* [chardet][chardet]: 检测字符编码
+* [ftfy](./ftfy.html): Unicode的转化(如恢复乱码，全角符转半角符等)
+
+* [fuzzywuzzy][fuzzywuzzy]: 模糊字符串匹配，匹配有多种模式，如`ratio`，`partial_ratio`，`token_sort_ratio`，`token_set_ratio`
+  使用了[Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance)算法。
+  使用`pip install fuzzywuzzy[speedup]`安装时会安装python-Levenshtein依赖，可以优化性能。
+* [python-Levenshtein][python-Levenshtein]: 字符串相似度计算。[文档](https://rawgit.com/ztane/python-Levenshtein/master/docs/Levenshtein.html)
+* [shortuuid][shortuuid]: 生成简洁明了，URL安全的UUID
+* [Unidecode][Unidecode]: Unicode文本的ASCII转换形式，如URL的slug化，全角转半角，中文转拼音等。
+* [pypinyin](https://github.com/mozillazg/python-pinyin): 汉字转拼音
+* [xpinyin](https://github.com/lxneng/xpinyin): 也是将汉字转拼音，但是更新不活跃了，不比pypinyin库。
+* [pyfiglet](https://github.com/pwaller/pyfiglet): 在终端用字符拼成单词
+  [所有字体的展示效果](https://gist.github.com/wolfhong/2bf308ba727cfbc92f8edaee30cb9eef)
+  [所有字体文件](https://github.com/pwaller/pyfiglet/tree/master/pyfiglet/fonts)
+* [python-phonenumbers][phonenumbers]: 解析，格式化，验证多国家电话号码。可获取所在地，代理商，时区等信息
+
+* [openpyxl][openpyxl]: 支持Microsoft Excel 2010的读写。
+* [xlwt, xlrd, xlutils][python-excel-all]: xlwt(只写)和xlrd(只读)和xlutils(封装前两者)在使用上过时了，只支持到了Excel 2003。推荐使用openpyxl。
+* [python-docx](https://github.com/python-openxml/python-docx): 对Microsoft Word documents的读写
+
+* [PLY](http://www.dabeaz.com/ply/): lex(词法分析) 和 yacc(语法分析) 解析工具的Python实现。官网上链接了其他Python实现的语法工具。
+* [pyparsing](http://pyparsing.wikispaces.com/): 可以生成通用的语法解析器的框架。
+* [Pygments](http://pygments.org/): 基于html的通用语法高亮工具，支持很多种语言。
+* [python-user-agents](https://github.com/selwin/python-user-agents): 浏览器UserAgent解析器，可判断pc/tablet/mobile/robot，是否可触屏。
+
+* [opencc-python](./opencc-python.html): 简体繁体的相互转换
+
 
 [requests]: http://docs.python-requests.org/zh_CN/latest/user/quickstart.html
 [arrow]: http://arrow.readthedocs.io/en/latest/#user-s-guide
 [chardet]: https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001510905171877ca6fdf08614e446e835ea5d9bce75cf5000
+[fuzzywuzzy]: https://github.com/seatgeek/fuzzywuzzy
+[python-Levenshtein]: https://pypi.org/project/python-Levenshtein/
+[shortuuid]: https://github.com/skorokithakis/shortuuid
+[Unidecode]: https://pypi.org/project/Unidecode/
 [phonenumbers]: https://zhuanlan.zhihu.com/p/24852734
-[opencc-python]: https://pypi.org/project/opencc-python/
+
 [openpyxl]: https://openpyxl.readthedocs.io/en/latest/
-
-
-* [xlwt, xlrd, xlutils](https://github.com/python-excel/):
-  xlwt(只写)和xlrd(只读)和xlutils(封装前两者)在使用上过时了，只支持到了Excel 2003。
-* [marmir](https://github.com/brianray/mm):
-  封装了xlwt，可以创建Google Docs，支持Django 的queryset
-  缺陷非常大，长时间没有更新，windows下打不开excel文件，只支持py2
-
 [xlwt]: https://github.com/python-excel/xlwt
 [xlrd]: https://github.com/python-excel/xlrd
 [xlutils]: https://github.com/python-excel/xlutils
-[openpyxl]: https://openpyxl.readthedocs.io/en/latest/
+[python-excel-all]: https://github.com/python-excel/

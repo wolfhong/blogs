@@ -24,7 +24,7 @@ OSX下安装(需要先安装libmagic依赖项):
 
 Windows下安装:
 
-    pip install python-magic-bin 0.4.14
+    pip install python-magic-bin==0.4.14
 
 ### 示例
 
