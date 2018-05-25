@@ -45,17 +45,29 @@ date: 2018-05-02 22:53:17
   [所有字体的展示效果](https://gist.github.com/wolfhong/2bf308ba727cfbc92f8edaee30cb9eef)
   [所有字体文件](https://github.com/pwaller/pyfiglet/tree/master/pyfiglet/fonts)
 * [python-phonenumbers][phonenumbers]: 解析，格式化，验证多国家电话号码。可获取所在地，代理商，时区等信息
-
-* [openpyxl][openpyxl]: 支持Microsoft Excel 2010的读写。
-* [xlwt, xlrd, xlutils][python-excel-all]: xlwt(只写)和xlrd(只读)和xlutils(封装前两者)在使用上过时了，只支持到了Excel 2003。推荐使用openpyxl。
-* [python-docx](https://github.com/python-openxml/python-docx): 对Microsoft Word documents的读写
+* [python-user-agents](https://github.com/selwin/python-user-agents): 浏览器UserAgent解析器，可判断pc/tablet/mobile/robot，是否可触屏。
 
 * [PLY](http://www.dabeaz.com/ply/): lex(词法分析) 和 yacc(语法分析) 解析工具的Python实现。官网上链接了其他Python实现的语法工具。
 * [pyparsing](http://pyparsing.wikispaces.com/): 可以生成通用的语法解析器的框架。
 * [Pygments](http://pygments.org/): 基于html的通用语法高亮工具，支持很多种语言。
-* [python-user-agents](https://github.com/selwin/python-user-agents): 浏览器UserAgent解析器，可判断pc/tablet/mobile/robot，是否可触屏。
 
-* [opencc-python](./opencc-python.html): 简体繁体的相互转换
+* [openpyxl][openpyxl]: 支持Microsoft Excel 2010的读写。支持图标、只读只写、样式、单元格验证、文件保护等Excel功能。
+* [xlwt, xlrd, xlutils][python-excel-all]: xlwt(只写)和xlrd(只读)和xlutils(封装前两者)在使用上过时了，只支持到了Excel 2003。推荐使用openpyxl。
+* [python-docx](https://github.com/python-openxml/python-docx): 对Microsoft Word documents的读写。
+* [PDFMiner](https://github.com/euske/pdfminer): 一个用于从 PDF 文档中抽取信息的工具。
+* [PyPDF2](https://github.com/mstamy2/PyPDF2): 一个可以分割，合并和转换 PDF 页面的库。
+* [ReportLab](http://www.reportlab.com/opensource/)：快速创建富文本 PDF 文档。
+
+* [mistune](https://github.com/lepture/mistune): Markdown 解析器。类比[pandoc][https://github.com/jgm/pandoc]
+* [csvkit](https://github.com/wireservice/csvkit): 用于转换和操作 CSV 的工具，对 CSV 执行 SQL 查询
+
+
+* [unp](https://github.com/mitsuhiko/unp): 整合各种解压归档文件的命令行工具
+* [click](https://github.com/pallets/click): 可组合的命令行工具
+* [pint](https://github.com/hgrecco/pint): 物理量的转换，类比[units](https://pypi.org/project/units/), [quantities](https://github.com/python-quantities/python-quantities)
+* [langid](https://github.com/saffsd/langid.py): 独立的语言识别系统
+
+
 
 
 [requests]: http://docs.python-requests.org/zh_CN/latest/user/quickstart.html

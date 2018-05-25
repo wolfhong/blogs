@@ -87,7 +87,7 @@ Python-LiveReload是为web开发者设计的，支持接入wsgi application.
     server.watch('glob/*.pattern')
 ```
 
-你也可以使用其他的库（比如[formic][formic]） 来提供更强大的功能:
+你也可以使用其他的库（比如[formic][formic]，可从[GitHub][formic2]获取） 来提供更强大的功能:
 
 ``` python
     for filepath in formic.FileSet(include="**.css"):
@@ -192,3 +192,4 @@ Python-LiveReload支持与其他的web框架无缝对接，如Django、Flask、B
 [sphinx-autobuild]: https://pypi.org/project/sphinx-autobuild/
 
 [formic]: ./formic.html
+[formic2]: https://github.com/wolfhong/formic

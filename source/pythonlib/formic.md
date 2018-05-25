@@ -26,9 +26,13 @@ formic既可以作为查找文件的命令行工具使用，也可以作为Pytho
 
 ### 安装
 
-有一点很可惜，在我写这篇文章时，formic还不支持Python3。
+很可惜，在我写这篇文章时，原作者开源的formic不支持Python3。
 
     pip install formic
+
+因此我在[GitHub][formic2]上fork了该项目，增加了Python3的支持，并修复了一些未解决的issue。用法保持不变，支持Windows和\*nix。
+
+    pip install formic2
 
 ### 示例
 
@@ -87,3 +91,4 @@ Python标准库中的[glob][glob]和[fnmatch][fnmatch]提供了类似的功能�
 [api-doc]: http://www.aviser.asia/formic/doc/api.html
 [glob]: https://docs.python.org/3/library/glob.html
 [fnmatch]: https://docs.python.org/3/library/fnmatch.html
+[formic2]: https://github.com/wolfhong/formic
